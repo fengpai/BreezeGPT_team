@@ -8,7 +8,7 @@ const StopGeneratingButton = () => {
   const { t } = useTranslation();
 
   return generating ? (
-      <button className='btn relative btn-neutral border-0 md:border' onClick={() => setGenerating(false)}>
+      <button className='btn relative btn-neutral border-1 md:border' onClick={() => setGenerating(false)}>
         <div className='flex w-full items-center justify-center gap-2'>
           <svg
             stroke='currentColor'

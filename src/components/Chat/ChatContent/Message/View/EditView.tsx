@@ -151,11 +151,12 @@ const EditView = ({
   
   return (
     <>
+      {sticky && (
       <div
-      className='absolute bottom-20 left-0 right-0 m-auto flex md:w-full md:m-auto gap-0 md:gap-2 justify-center'
-      onClick={() => setGenerating(false)}>
+      className='absolute bottom-20 left-0 right-0 m-auto flex md:w-full md:m-auto gap-0 md:gap-2 justify-center'>
         <StopGeneratingButton />
       </div>
+      )}
 
       <div
         className={`w-full ${

@@ -174,7 +174,7 @@ const SubmitArea = ({
                     </svg>
                     {t('generateAnswer')}
                 </button>)}
-                {generating && (
+                {sticky && generating && (
                     <div className=''>
                         <StopGeneratingButton />
                     </div>

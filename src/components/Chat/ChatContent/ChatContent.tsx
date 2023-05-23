@@ -87,7 +87,7 @@ const ChatContent = ({
             <div className="w-full h-96 md:h-96 flex-shrink-0"></div>
           </div>
 
-          <div className='absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent bg-vert-dark-gradient dark:md:bg-vert-dark-gradient pt-2 abc'>
+          <div className='absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent bg-vert-dark-gradient dark:md:bg-vert-dark-gradient'>
           {advancedMode && (<Message
               role={inputRole}
               content=''
@@ -125,7 +125,7 @@ const ChatContent = ({
               }`}
             >
               {useStore.getState().generating || (
-                <div className='md:w-[calc(100%)] flex gap-2 flex-wrap justify-center'>
+                <div className='md:w-[calc(100%)] flex gap-2 flex-wrap justify-center hidden md:flex'>
                   <DownloadChat saveRef={saveRef} />
                   <ShareGPT/>
                   <CloneChat />
