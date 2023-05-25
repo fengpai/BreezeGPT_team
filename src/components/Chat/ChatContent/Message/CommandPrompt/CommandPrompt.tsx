@@ -9,11 +9,13 @@ import PopupModal from '@components/PopupModal';
 
 import useHideOnOutsideClick from '@hooks/useHideOnOutsideClick';
 
-const CommandPrompt = ({
+const CommandPrompt = React.forwardRef(({
   _setContent,
+  setIsCommandOpen
 }: {
   _setContent: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+  setIsCommandOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}, ref: React.Ref<HTMLDivElement>) => {
   const { t } = useTranslation();
   const prompts = useStore((state) => state.prompts);
   const [_prompts, _setPrompts] = useState<Prompt[]>(prompts);
@@ -22,6 +24,15 @@ const CommandPrompt = ({
   const [dropDown, setDropDown, dropDownRef] = useHideOnOutsideClick();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      setIsCommandOpen(true);
+    } else {
+      setIsCommandOpen(false);
+    }
+    return () => {};
+  }, [isModalOpen]);
 
   useEffect(() => {
     const filteredPrompts = matchSorter(useStore.getState().prompts, input, {
@@ -46,6 +57,7 @@ const CommandPrompt = ({
         /
       </button>
       {isModalOpen && (
+        <div ref={ref}>
         <PopupModal
           setIsModalOpen={setIsModalOpen}
           title={t('promptLibrary') as string}
@@ -82,12 +94,13 @@ const CommandPrompt = ({
             </ul>
           </div>
         </PopupModal>
+        </div>
       )}
 
 
 
     </div>
   );
-};
+});
 
 export default CommandPrompt;

@@ -7,7 +7,8 @@ await import('katex/dist/katex.min.css');
 import './i18n';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>
+  <App />
 );

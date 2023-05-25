@@ -142,7 +142,7 @@ const ContentView = memo(
             <span className='whitespace-pre-wrap'>{content}</span>
           )}
         </div>
-        <div className='flex justify-end gap-2 w-full mt-2'>
+        <div className='flex justify-end gap-2 w-full mt-3'>
           {isDelete || (
             <>
               {!useStore.getState().generating &&
@@ -157,7 +157,7 @@ const ContentView = memo(
               <NewMessageButton messageIndex={messageIndex} />
               <MarkdownModeButton />
               <CopyButton onClick={handleCopy} />
-              <EditButton setIsEdit={setIsEdit} />
+              {/* <EditButton setIsEdit={setIsEdit} /> */}
               <DeleteButton onClick={handleDelete}/>
             </>
           )}

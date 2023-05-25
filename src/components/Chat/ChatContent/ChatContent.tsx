@@ -45,7 +45,7 @@ const ChatContent = ({
   const saveRef = useRef<HTMLDivElement>(null);
   const newEditIndex = useStore((state) => state.newEditIndex);
   const setNewEditIndex = useStore((state) => state.setNewEditIndex);
-  console.log("edit index:"+newEditIndex)
+  //console.log("edit index:"+newEditIndex)
   // clear error at the start of generating new messages
   useEffect(() => {
     if (generating) {

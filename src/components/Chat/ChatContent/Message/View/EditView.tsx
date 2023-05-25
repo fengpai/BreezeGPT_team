@@ -10,6 +10,7 @@ import PopupModal from '@components/PopupModal';
 import TokenCount from '@components/TokenCount';
 import CommandPrompt from '../CommandPrompt';
 import StopGeneratingButton from '@components/StopGeneratingButton/StopGeneratingButton';
+import _ from 'lodash';
 
 const EditView = ({
   content,
@@ -25,7 +26,6 @@ const EditView = ({
   const inputRole = useStore((state) => state.inputRole);
   const setChats = useStore((state) => state.setChats);
   const _draft = useStore((state) => state.draft);
-  const setDraft = useStore((state) => state.setDraft);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const advancedMode = useStore((state) => state.advancedMode);
   const generating = useStore.getState().generating;
@@ -34,6 +34,40 @@ const EditView = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   //const textareaRef = React.createRef<HTMLTextAreaElement>();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const prevContentRef = useRef(_content);
+
+  // 定义需要排除的元素的refs
+  const excludeElement1 = useRef<HTMLDivElement>(null);
+  const excludeElement2 = useRef<HTMLDivElement>(null);
+  const [isCommandOpen, setIsCommandOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+  // 如果modal打开，不进行点击检查
+    if (isCommandOpen) {
+      return;
+    }
+
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      //if (textareaRef.current && !textareaRef.current.contains(e.target as Node)) {
+    if (
+        textareaRef.current && 
+        !textareaRef.current.contains(e.target as Node) &&
+        excludeElement1.current && 
+        !excludeElement1.current.contains(e.target as Node) 
+        // && excludeElement2.current 
+        // && !excludeElement2.current.contains(e.target as Node)
+      ) {
+        //handleSaveSilence()
+        setTimeout(() => setIsEdit(false), 0);
+      }
+    }
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [_content, isModalOpen, isCommandOpen]);
 
   const { t } = useTranslation();
 
@@ -75,13 +109,13 @@ const EditView = ({
     );
     const updatedMessages = updatedChats[currentChatIndex].messages;
     if (sticky) {
-      console.log(messageIndex)
       if(updatedMessages[messageIndex] !== undefined) {
         updatedMessages[messageIndex].content = _content;
       }
-      setDraft(_content);
+      //setDraft(_content);
     } else {
       updatedMessages[messageIndex].content = _content;
+      //_setContent(updatedMessages[messageIndex].content);
     }    
     setChats(updatedChats);
   };
@@ -97,6 +131,7 @@ const EditView = ({
       _setContent('');
       resetTextAreaHeight();
     } else {
+      console.log(_content)
       updatedMessages[messageIndex].content = _content;
       setIsEdit(false);
     }
@@ -131,8 +166,11 @@ const EditView = ({
   const setGenerating = useStore((state) => state.setGenerating);
 
   useEffect(() => {
-    console.log("saving silence")
-    handleSaveSilence();
+    if (prevContentRef.current !== _content) {
+      console.log("saving silence")
+      handleSaveSilence();
+    }
+    prevContentRef.current = _content;
   }, [_content]);
 
   useEffect(() => {
@@ -182,17 +220,28 @@ const EditView = ({
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
         </button>)}
-        {sticky || (<EditViewButtons
-          sticky={sticky}
-          handleSaveAndSubmit={handleSaveAndSubmit}
-          handleSave={handleSave}
-          setIsModalOpen={setIsModalOpen}
-          setIsEdit={setIsEdit}
-          _setContent={_setContent}
-        />)}
+        {sticky || (
+          <div ref={excludeElement1}>
+            <EditViewButtons
+              ref={excludeElement2}
+              sticky={sticky}
+              handleSaveAndSubmit={handleSaveAndSubmit}
+              handleSave={handleSave}
+              setIsModalOpen={setIsModalOpen}
+              setIsCommandOpen={setIsCommandOpen}
+              setIsEdit={setIsEdit}
+              _setContent={_setContent}
+            />
+          </div>
+        )}
       </div>
       <div className='absolute top-0 -right-7'>
-        {sticky && (<CommandPrompt _setContent={_setContent} />)}
+        {sticky && (
+          <CommandPrompt 
+          _setContent={_setContent} 
+          setIsCommandOpen={setIsCommandOpen}
+          />
+        )}
       </div>
       {sticky && advancedMode && (
         <div className='absolute top-[-20px] right-0'>
@@ -200,19 +249,20 @@ const EditView = ({
         </div>
       )}
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <PopupModal
           setIsModalOpen={setIsModalOpen}
           title={t('warning') as string}
           message={t('clearMessageWarning') as string}
           handleConfirm={handleSaveAndSubmit}
         />
-      )}
+      )} */}
     </>
   );
 };
 
 const EditViewButtons = memo(
+  React.forwardRef(
   ({
     sticky = false,
     handleSaveAndSubmit,
@@ -220,6 +270,7 @@ const EditViewButtons = memo(
     setIsModalOpen,
     setIsEdit,
     _setContent,
+    setIsCommandOpen
   }: {
     sticky?: boolean;
     handleSaveAndSubmit: () => void;
@@ -227,10 +278,21 @@ const EditViewButtons = memo(
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
     _setContent: React.Dispatch<React.SetStateAction<string>>;
-  }) => {
+    setIsCommandOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  }, ref) => {
     const { t } = useTranslation();
     const generating = useStore.getState().generating;
     const advancedMode = useStore((state) => state.advancedMode);
+    
+    // useEffect(() => {
+    //   setIsCommandOpen(true);
+    //   console.log("cmd opened")
+    
+    //   return () => {
+    //     console.log("cmd closed")
+    //     setIsCommandOpen(false);
+    //   };
+    // }, []);
 
     return (
       <div className='flex relative'>
@@ -248,7 +310,7 @@ const EditViewButtons = memo(
             </button>
           )} */}
 
-          {sticky || (<button
+          {/* {sticky || (<button
             className={`btn relative mr-2 ${
               sticky
                 ? `btn-neutral ${
@@ -262,7 +324,7 @@ const EditViewButtons = memo(
               {t('save')}
             </div>
           </button>
-          )}
+          )} */}
 
           {/* {sticky || (
             <button
@@ -288,10 +350,15 @@ const EditViewButtons = memo(
             </button>
           )} */}
         </div>
-        {sticky || (<CommandPrompt _setContent={_setContent} />)}
+        {sticky || (
+        <CommandPrompt 
+          _setContent={_setContent} 
+          setIsCommandOpen={setIsCommandOpen}
+        />)
+        }
       </div>
     );
   }
-);
+));
 
 export default EditView;

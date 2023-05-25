@@ -1,10 +1,10 @@
-<h1 align="center"><b>Better ChatGPT</b></h1>
+<h1 align="center"><b>BreezeGPT</b></h1>
 
 <p align="center">
     <a href="https://bettergpt.chat" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
 </p>
 
-<h4 align="center"><b>免费、无限、强大、智能、迷人</b></h4>
+<h4 align="center"><b>更强大、更易用的ChatGPT Playground</b></h4>
 
 <p align="center">
 <a href="https://github.com/ztjhz/BetterChatGPT/blob/main/LICENSE" target="_blank">
@@ -32,21 +32,12 @@
     ·
     <a href="https://github.com/ztjhz/BetterChatGPT/issues/new/choose">请求功能</a>
 </p>
-<p align="center"><i>您喜欢使用 Better ChatGPT 吗？请给它一个星星以示支持！🌟</i></p>
 
-## 👋🏻 介绍 Better ChatGPT
+## 关于BreezeGPT
 
-<p align="center">
-    <a href="https://bettergpt.chat" target="_blank">
-        <img src="assets/preview-zh_CN.png" alt="landing" width=500 />
-    </a>
-</p>
+BreezeGPT是在BetterChatGPT基础上进行二次开发而来的项目，为了是能够进一步提升Playground的使用体验，感谢卓越的工作。
 
-您准备好使用 Better ChatGPT 充分发掘 ChatGPT 的潜力了吗？
-
-Better ChatGPT 是任何想要体验对话型人工智能无限潜力的人的终极目的地。我们的应用程序利用 OpenAI 的 ChatGPT API 的全部潜力，提供了一个无与伦比的聊天机器人体验，而且完全免费，并且没有任何限制。
-
-无论您是想与虚拟助手聊天、提高语言技能，还是想享受有趣而引人入胜的对话，我们的应用都能满足您的需求。那么，为什么还要等呢？立即加入我们，探索 Better ChatGPT 的精彩世界！
+我们在利用ChatGPT进行开发的过程中，发现OpenAI官方提供的Playground存在一定的局限性。
 
 # 🔥 功能
 
