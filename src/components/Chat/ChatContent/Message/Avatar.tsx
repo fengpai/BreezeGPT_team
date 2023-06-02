@@ -19,24 +19,28 @@ const Avatar = React.memo(
   const setInputRole = useStore((state) => state.setInputRole);
   const setChats = useStore((state) => state.setChats);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
+  const advancedMode = useStore((state) => state.advancedMode);
 
   return (
-    <div className='w-[30px] flex flex-col relative items-end' onClick={() => {
-      const updatedChats: ChatInterface[] = JSON.parse(
-        JSON.stringify(useStore.getState().chats)
-      );
-      let index = roles.indexOf(role);
-      if(!sticky) {        
-        updatedChats[currentChatIndex].messages[messageIndex].role = roles[(index + 1) % roles.length];
-        setChats(updatedChats);
-      }  else {
-        setInputRole(roles[(index + 1) % roles.length]);
-      }
-
+    <div className='w-[30px] flex flex-col relative items-end'>
+        <div onClick={() => {
+        if(advancedMode) {
+          const updatedChats: ChatInterface[] = JSON.parse(
+            JSON.stringify(useStore.getState().chats)
+          );
+          let index = roles.indexOf(role);
+          if(!sticky) {        
+            updatedChats[currentChatIndex].messages[messageIndex].role = roles[(index + 1) % roles.length];
+            setChats(updatedChats);
+          }  else {
+            setInputRole(roles[(index + 1) % roles.length]);
+          }
+        }
       }}>
-      {role === 'user' && <UserAvatar />}
-      {role === 'assistant' && <AssistantAvatar />}
-      {role === 'system' && <SystemAvatar />}
+        {role === 'user' && <UserAvatar />}
+        {role === 'assistant' && <AssistantAvatar />}
+        {role === 'system' && <SystemAvatar />}
+        </div>
     </div>
   );
 });
@@ -45,7 +49,7 @@ const UserAvatar = () => {
   return (
     <div
       className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
-      style={{ backgroundColor: 'rgb(200, 70, 70)' }}
+      style={{ backgroundColor: '#f08686' }}
     >
       <PersonIcon />
     </div>
@@ -53,10 +57,17 @@ const UserAvatar = () => {
 };
 
 const AssistantAvatar = () => {
+  const advancedMode = useStore((state) => state.advancedMode);
+  const config = useStore.getState().defaultChatConfig;
+  const model = useStore((state) =>
+  state.chats
+    ? state.chats[state.currentChatIndex].config.model
+    : 'gpt-3.5-turbo'
+  );
   return (
     <div
       className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
-      style={{ backgroundColor: 'rgb(16, 163, 127)' }}
+      style={{ backgroundColor: (model !== 'gpt-3.5-turbo')?'#9560ea':'#19c37d' }}
     >
       <svg
         width='41'

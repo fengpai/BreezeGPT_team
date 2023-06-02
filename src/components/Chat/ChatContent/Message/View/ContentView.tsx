@@ -30,7 +30,7 @@ import CopyButton from './Button/CopyButton';
 import EditButton from './Button/EditButton';
 import DeleteButton from './Button/DeleteButton';
 import MarkdownModeButton from './Button/MarkdownModeButton';
-import NewMessageButton from './../NewMessageButton';
+import NewMessageButtonInline from './../NewMessageButtonInline';
 
 import CodeBlock from '../CodeBlock';
 
@@ -57,6 +57,7 @@ const ContentView = memo(
     );
     const inlineLatex = useStore((state) => state.inlineLatex);
     const markdownMode = useStore((state) => state.markdownMode);
+    const advancedMode = useStore((state) => state.advancedMode);
 
     const handleDelete = () => {
       console.log(isDelete);
@@ -110,9 +111,15 @@ const ContentView = memo(
       navigator.clipboard.writeText(content);
     };
 
+    const handleClick = () => {
+      if (advancedMode) {
+        setIsEdit(true)
+      }
+    };
+
     return (
       <>
-        <div className='markdown prose w-full md:max-w-full break-words dark:prose-invert dark share-gpt-message min-h-[28px]' onClick={() => setIsEdit(true)}>
+        <div className='markdown prose w-full md:max-w-full break-words dark:prose-invert dark share-gpt-message min-h-[28px]' onClick={handleClick}>
           {markdownMode ? (
             <ReactMarkdown
               remarkPlugins={[
@@ -150,15 +157,15 @@ const ContentView = memo(
                 messageIndex === lastMessageIndex && (
                   <RefreshButton onClick={handleRefresh} />
                 )}
-              {messageIndex !== 0 && <UpButton onClick={handleMoveUp} />}
-              {messageIndex !== lastMessageIndex && (
+              {messageIndex !== 0 && advancedMode && <UpButton onClick={handleMoveUp} />}
+              {messageIndex !== lastMessageIndex && advancedMode && (
                 <DownButton onClick={handleMoveDown} />
               )}
-              <NewMessageButton messageIndex={messageIndex} />
-              <MarkdownModeButton />
-              <CopyButton onClick={handleCopy} />
-              {/* <EditButton setIsEdit={setIsEdit} /> */}
-              <DeleteButton onClick={handleDelete}/>
+              {advancedMode && <NewMessageButtonInline messageIndex={messageIndex} />}
+              {advancedMode && <MarkdownModeButton />}
+              {<CopyButton onClick={handleCopy} />}
+              {advancedMode || role === 'user' && <EditButton setIsEdit={setIsEdit} />}
+              {advancedMode && <DeleteButton onClick={handleDelete}/>}
             </>
           )}
           {isDelete && (

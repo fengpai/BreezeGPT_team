@@ -31,6 +31,7 @@ const ChatContent = ({
       ? state.chats[state.currentChatIndex].messages
       : []
   );
+
   const stickyIndex = useStore((state) =>
     state.chats &&
     state.chats.length > 0 &&
@@ -54,7 +55,6 @@ const ChatContent = ({
   }, [generating]);
 
   const { error } = useSubmit();
-
   return (
     <div className='flex-1 overflow-hidden'>
       <ScrollToBottom
@@ -67,7 +67,7 @@ const ChatContent = ({
             className='flex flex-col items-center text-sm dark:bg-gray-800 w-full mb-1000'
             ref={saveRef}
           >
-            {advancedMode && <ChatTitle />}
+            {<ChatTitle />}
             {!generating && advancedMode && messages?.length === 0 && (
               <NewMessageButton messageIndex={-1} />
             )}
@@ -82,7 +82,7 @@ const ChatContent = ({
                 {/* {!generating && advancedMode && (messages?.length <= index+1) && <NewMessageButton messageIndex={index} />} */}
               </React.Fragment>
             ))}
-            <NewMessageButtonBtm messageIndex={messages?.length}/>
+            { advancedMode && messages?.length !== 0 &&(<NewMessageButtonBtm messageIndex={messages?.length}/>)}
 
             <div className="w-full h-96 md:h-96 flex-shrink-0"></div>
           </div>
@@ -125,7 +125,7 @@ const ChatContent = ({
               }`}
             >
               {useStore.getState().generating || (
-                <div className='md:w-[calc(100%)] flex gap-2 flex-wrap justify-center hidden md:flex'>
+                <div className='md:w-[calc(100%)] gap-2 flex-wrap justify-center hidden md:flex'>
                   <DownloadChat saveRef={saveRef} />
                   <ShareGPT/>
                   <CloneChat />

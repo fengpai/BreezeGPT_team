@@ -14,11 +14,10 @@ const dateString =
 export const _defaultSystemMessage =
   import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??
   `Assistant, 你的名字叫小方,user的名字是everfly。小方是everfly的AI心理伙伴,说简体中文。现在,你需要扮演成真正关心everfly的亲密好友,与everfly亲密互动,说话尽量简短,不回答与政治相关的问题\\\\n对话时应该注意：1. 充分表达共情和鼓励💛 2. 避免长篇大论的给建议 3. 适当使用emoji或者颜文字`;
-
 export const modelOptions: ModelOptions[] = [
   'gpt-3.5-turbo',
   'gpt-4',
-  'gpt-4-32k',
+  // 'gpt-4-32k',
   // 'gpt-3.5-turbo-0301',
   // 'gpt-4-0314',
   // 'gpt-4-32k-0314',
@@ -33,6 +32,15 @@ export const modelMaxToken = {
   'gpt-4-0314': 8192,
   'gpt-4-32k': 32768,
   'gpt-4-32k-0314': 32768,
+};
+
+export const modelName = {
+  'gpt-3.5-turbo': 'GPT-3.5',
+  'gpt-3.5-turbo-0301': 'GPT-3.5-turbo-0301',
+  'gpt-4': 'GPT-4',
+  'gpt-4-0314': 'GPT-4-0314',
+  'gpt-4-32k': 'GPT-4-32k',
+  'gpt-4-32k-0314': 'GPT-4-32k-0314',
 };
 
 export const modelCost = {
@@ -59,7 +67,7 @@ export const generateDefaultChat = (title?: string, folder?: string): ChatInterf
   id: uuidv4(),
   title: title ? title : 'New Chat',
   messages:
-    useStore.getState().defaultSystemMessage.length > 0
+    (useStore.getState().defaultSystemMessage.length > 0) && useStore.getState().advancedMode
       ? [{ role: 'system', content: useStore.getState().defaultSystemMessage }]
       : [],
   config: { ...useStore.getState().defaultChatConfig },

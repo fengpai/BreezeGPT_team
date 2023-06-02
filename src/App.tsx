@@ -4,6 +4,7 @@ import i18n from './i18n';
 
 import Chat from '@components/Chat';
 import Menu from '@components/Menu';
+import Sidebar from '@components/Sidebar';
 
 import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 import { ChatInterface } from '@type/chat';
@@ -80,7 +81,8 @@ function App() {
   }, []);
 
   return (
-    <div className='overflow-hidden w-full h-full relative'>
+    <div className='overflow-hidden w-full h-full relative flex'>
+      {/* <Sidebar /> */}
       <Menu />
       <Chat />
       <ApiPopup />

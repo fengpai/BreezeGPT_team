@@ -16,6 +16,7 @@ import JsonIcon from '@icon/JsonIcon';
 
 import downloadFile from '@utils/downloadFile';
 import ExportIcon from '@icon/ExportIcon';
+import DownloadIcon from '@icon/DownloadIcon';
 
 const DownloadChat = React.memo(
   ({ saveRef }: { saveRef: React.RefObject<HTMLDivElement> }) => {
@@ -29,7 +30,7 @@ const DownloadChat = React.memo(
             setIsModalOpen(true);
           }}
         >
-          <ExportIcon/>
+          <DownloadIcon/>
           {/* t('downloadChat') */}
         </button>
         {isModalOpen && (

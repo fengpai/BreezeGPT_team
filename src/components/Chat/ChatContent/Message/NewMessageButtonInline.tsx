@@ -7,7 +7,7 @@ import { ChatInterface } from '@type/chat';
 import { generateDefaultChat } from '@constants/chat';
 import BaseButton from './View/Button/BaseButton';
 
-const NewMessageButton = React.memo(
+const NewMessageButtonInline = React.memo(
   ({ messageIndex }: { messageIndex: number }) => {
     const setChats = useStore((state) => state.setChats);
     const currentChatIndex = useStore((state) => state.currentChatIndex);
@@ -37,13 +37,12 @@ const NewMessageButton = React.memo(
       if (currentChatIndex === -1) {
         addChat();
       } else {
-        console.log(messageIndex)
         const updatedChats: ChatInterface[] = JSON.parse(
           JSON.stringify(useStore.getState().chats)
         );
         updatedChats[currentChatIndex].messages.splice(messageIndex + 1, 0, {
           content: '',
-          role: (messageIndex === -1)?'system':'user',
+          role: 'user',
         });
         setNewEditIndex(messageIndex+1);
         setChats(updatedChats);
@@ -52,17 +51,10 @@ const NewMessageButton = React.memo(
 
     return (
       <>
-        <div className='h-0 w-0 relative' key={messageIndex}>
-          <div
-            className='absolute top-0 right-0 translate-x-1/2 translate-y-[-50%] text-gray-600 dark:text-white cursor-pointer bg-gray-200 dark:bg-gray-600/80 rounded-full p-1 text-sm hover:bg-gray-300 dark:hover:bg-gray-800/80 transition-bg duration-200 md:group-hover:visible'
-            onClick={addMessage}
-          >
-            <PlusIcon />
-          </div>
-        </div>
+        <BaseButton icon={<PlusIcon />} onClick={addMessage} />
       </>
     );
   }
 );
 
-export default NewMessageButton;
+export default NewMessageButtonInline;

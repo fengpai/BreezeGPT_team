@@ -43,7 +43,7 @@ const EditView = ({
 
   useEffect(() => {
   // 如果modal打开，不进行点击检查
-    if (isCommandOpen) {
+    if (isCommandOpen || !advancedMode) {
       return;
     }
 
@@ -140,6 +140,7 @@ const EditView = ({
 
   const { handleSubmit } = useSubmit();
   const handleSaveAndSubmit = () => {
+    console.log("save and submit")
     if (useStore.getState().generating) return;
     const updatedChats: ChatInterface[] = JSON.parse(
       JSON.stringify(useStore.getState().chats)
@@ -166,11 +167,13 @@ const EditView = ({
   const setGenerating = useStore((state) => state.setGenerating);
 
   useEffect(() => {
-    if (prevContentRef.current !== _content) {
-      console.log("saving silence")
-      handleSaveSilence();
+    if (advancedMode) {
+      if (prevContentRef.current !== _content) {
+        console.log("saving silence")
+        handleSaveSilence();
+      }
+      prevContentRef.current = _content;
     }
-    prevContentRef.current = _content;
   }, [_content]);
 
   useEffect(() => {
@@ -214,7 +217,7 @@ const EditView = ({
           onKeyDown={handleKeyDown}
           rows={1}
         ></textarea>
-        {sticky && (<button className="absolute p-1 rounded-md text-gray-500 bottom-1.5 md:bottom-2.5 hover:bg-gray-100 enabled:dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent right-1 md:right-2 disabled:opacity-40" disabled={_content === '' || generating} onClick={handleSaveAndSubmit}>
+        {sticky && (<button className="absolute p-1 rounded-md text-gray-500 md:bottom-2.5 hover:bg-gray-100 enabled:dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent right-1 md:right-2 disabled:opacity-40" disabled={_content === '' || generating} onClick={handleSaveAndSubmit}>
           <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -236,7 +239,7 @@ const EditView = ({
         )}
       </div>
       <div className='absolute top-0 -right-7'>
-        {sticky && (
+        {sticky && advancedMode && (
           <CommandPrompt 
           _setContent={_setContent} 
           setIsCommandOpen={setIsCommandOpen}
@@ -249,14 +252,14 @@ const EditView = ({
         </div>
       )}
 
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <PopupModal
           setIsModalOpen={setIsModalOpen}
           title={t('warning') as string}
           message={t('clearMessageWarning') as string}
           handleConfirm={handleSaveAndSubmit}
         />
-      )} */}
+      )}
     </>
   );
 };
@@ -310,7 +313,21 @@ const EditViewButtons = memo(
             </button>
           )} */}
 
-          {/* {sticky || (<button
+          {sticky || advancedMode || (
+            <button
+              className='btn relative mr-2 btn-primary'
+              onClick={() => {
+                !generating && setIsModalOpen(true);
+              }}
+              //onClick={handleSaveAndSubmit}
+            >
+              <div className='flex items-center justify-center gap-2'>
+                {t('saveAndSubmit')}
+              </div>
+            </button>
+          )}
+
+          {sticky || advancedMode || (<button
             className={`btn relative mr-2 ${
               sticky
                 ? `btn-neutral ${
@@ -324,22 +341,9 @@ const EditViewButtons = memo(
               {t('save')}
             </div>
           </button>
-          )} */}
+          )}
 
-          {/* {sticky || (
-            <button
-              className='btn relative mr-2 btn-neutral'
-              onClick={() => {
-                !generating && setIsModalOpen(true);
-              }}
-            >
-              <div className='flex items-center justify-center gap-2'>
-                {t('saveAndSubmit')}
-              </div>
-            </button>
-          )} */}
-
-          {/* {sticky || (
+          {sticky || advancedMode || (
             <button
               className='btn relative btn-neutral'
               onClick={() => setIsEdit(false)}
@@ -348,7 +352,7 @@ const EditViewButtons = memo(
                 {t('cancel')}
               </div>
             </button>
-          )} */}
+          )}
         </div>
         {sticky || (
         <CommandPrompt 

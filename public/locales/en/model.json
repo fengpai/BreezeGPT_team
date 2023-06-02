@@ -24,5 +24,7 @@
   },
   "defaultChatConfig": "Default Chat Config",
   "defaultSystemMessage": "Default System Message",
-  "resetToDefault": "Reset To Default"
+  "resetToDefault": "Reset To Default",
+  "chatMode": "Chat Mode",
+  "advancedMode": "Developer Mode"
 }

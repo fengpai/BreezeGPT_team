@@ -45,7 +45,7 @@ const MessageChat = React.memo(
           }`}
         >
           {/* <Avatar role={role} messageIndex={messageIndex} sticky={sticky}/> */}
-          <div className='w-[calc(100%-50px)] '>
+          <div className='w-[calc(100%)] '>
             {/* {advancedMode &&
               <RoleSelector
                 role={role}

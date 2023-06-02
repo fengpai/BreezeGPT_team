@@ -29,7 +29,7 @@ const SubmitButton = ({
   // console.log('is edit:'+isEdit)
 
   return (
-    <div className='relative flex flex-col lg:w-[calc(100%-115px)]'>
+    <div className='relative flex flex-col lg:w-[calc(100%)]'>
       {advancedMode && <div className='flex flex-grow flex-col gap-3'></div>}
       {isEdit ? (
         <SubmitArea

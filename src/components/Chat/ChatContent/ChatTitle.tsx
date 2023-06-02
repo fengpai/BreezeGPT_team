@@ -4,7 +4,7 @@ import { shallow } from 'zustand/shallow';
 import useStore from '@store/store';
 import ConfigMenu from '@components/ConfigMenu';
 import { ChatInterface, ConfigInterface } from '@type/chat';
-import { _defaultChatConfig } from '@constants/chat';
+import { _defaultChatConfig, modelName } from '@constants/chat';
 
 const ChatTitle = React.memo(() => {
   const { t } = useTranslation('model');
@@ -21,6 +21,13 @@ const ChatTitle = React.memo(() => {
   const setChats = useStore((state) => state.setChats);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const advancedMode = useStore((state) => state.advancedMode);
+
+  const model = useStore((state) =>
+    state.chats
+      ? state.chats[state.currentChatIndex].config.model
+      : 'gpt-3.5-turbo'
+  );
 
   const setConfig = (config: ConfigInterface) => {
     const updatedChats: ChatInterface[] = JSON.parse(
@@ -48,10 +55,11 @@ const ChatTitle = React.memo(() => {
           setIsModalOpen(true);
         }}
       >
-        <div className='text-center p-1 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
-          {t('model')}: {config.model}
+        <div className='text-center p-2 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
+          {/* {t('model')}:  */}
+          {modelName[model]} {advancedMode ? '('+t('advancedMode')+')':''}
         </div>
-        <div className='text-center p-1 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
+        {/* <div className='text-center p-1 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
           {t('token.label')}: {config.max_tokens}
         </div>
         <div className='text-center p-1 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
@@ -65,7 +73,7 @@ const ChatTitle = React.memo(() => {
         </div>
         <div className='text-center p-1 rounded-md bg-gray-300/20 dark:bg-gray-900/10 hover:bg-gray-300/50 dark:hover:bg-gray-900/50'>
           {t('frequencyPenalty.label')}: {config.frequency_penalty}
-        </div>
+        </div> */}
       </div>
       {isModalOpen && (
         <ConfigMenu

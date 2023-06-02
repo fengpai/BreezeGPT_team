@@ -2,6 +2,7 @@ import React from 'react';
 import useStore from '@store/store';
 import { MessageInterface } from '@type/chat';
 import { generateDefaultChat } from '@constants/chat';
+import { init } from 'i18next';
 
 const useInitialiseNewChat = () => {
   const setChats = useStore((state) => state.setChats);
@@ -11,7 +12,6 @@ const useInitialiseNewChat = () => {
     setChats([generateDefaultChat()]);
     setCurrentChatIndex(0);
   };
-
   return initialiseNewChat;
 };
 
