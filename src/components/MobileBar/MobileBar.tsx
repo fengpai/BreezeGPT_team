@@ -7,6 +7,7 @@ import useAddChat from '@hooks/useAddChat';
 import { shallow } from 'zustand/shallow';
 import ConfigMenu from '@components/ConfigMenu';
 import { ChatInterface, ConfigInterface } from '@type/chat';
+import { _defaultChatConfig, modelName } from '@constants/chat';
 
 import DownloadChat from '@components/Chat/ChatContent/DownloadChat';
 
@@ -17,15 +18,9 @@ import NewChat from '@components/Menu/NewChat';
 import { Dropdown } from 'flowbite';
 
 import type { DropdownOptions, DropdownInterface } from "flowbite";
-import { _defaultChatConfig, modelName } from '@constants/chat';
 
 const MobileBar = () => {
   const { t } = useTranslation('model');
-  const model = useStore((state) =>
-    state.chats
-      ? state.chats[state.currentChatIndex].config.model
-      : 'gpt-3.5-turbo'
-  );
   const config = useStore(
     (state) =>
       state.chats &&
@@ -35,6 +30,11 @@ const MobileBar = () => {
         ? state.chats[state.currentChatIndex].config
         : undefined,
     shallow
+  );
+  const model = useStore((state) =>
+    state.chats
+      ? state.chats[state.currentChatIndex].config.model
+      : 'gpt-3.5-turbo'
   );
   const setChats = useStore((state) => state.setChats);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
@@ -63,8 +63,8 @@ const MobileBar = () => {
   const saveRef = useRef<HTMLDivElement>(null);
 
   // use ref to get the DOM elements
-  const targetElRef = useRef<HTMLElement | null>(null);
-  const triggerElRef = useRef<HTMLElement | null>(null);
+  const targetElRef = useRef<HTMLDivElement | null>(null);
+  const triggerElRef = useRef<HTMLButtonElement | null>(null);
 
   // use ref to store the dropdown instance
   const dropdownRef = useRef<DropdownInterface | null>(null);
@@ -95,7 +95,7 @@ const MobileBar = () => {
   }, []);
 
 
-  return (
+  return config ? (
     <div className='sticky top-0 left-0 w-full z-50 flex items-center border-b border-white/20 bg-gray-800 pl-1 pt-1 text-gray-200 sm:pl-3 md:hidden'>
       <button
         type='button'
@@ -154,6 +154,8 @@ const MobileBar = () => {
         />
       )}
     </div>
+  ) : (
+    <></>
   );
 };
 
