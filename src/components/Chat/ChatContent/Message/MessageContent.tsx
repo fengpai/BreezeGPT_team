@@ -29,7 +29,7 @@ const MessageContent = ({
   // console.log('is edit:'+isEdit)
 
   return (
-    <div className='relative flex flex-col lg:w-[calc(100%)]'>
+    <div className='relative flex flex-col lg:w-[calc(100%)] md:w-[calc(100%-50px)]'>
       {advancedMode && <div className='flex flex-grow flex-col gap-3'></div>}
       {isEdit ? (
         <EditView

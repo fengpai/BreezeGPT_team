@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 const ShareIcon = (props: React.SVGProps<SVGSVGElement>) => {
   const { t } = useTranslation();
   return (
-    <svg className="h-6 w-6"  
+    <svg className="h-4 w-4"  
       viewBox="0 0 24 24"  
       fill="none"  
       stroke="currentColor"  

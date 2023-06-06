@@ -44,6 +44,7 @@
   "cloned": "已创建副本",
   "enterToSubmit": "按回车键提交",
   "submitPlaceholder": "输入消息或点击 [/] 以使用提示词…",
+  "submitPlaceholderbtm": "输入消息…",
   "generateAnswer": "生成回答",
   "stopGenerating": "停止生成"
 }

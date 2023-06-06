@@ -12,8 +12,7 @@ const dateString =
 
 // default system message obtained using the following method: https://twitter.com/DeminDimin/status/1619935545144279040
 export const _defaultSystemMessage =
-  import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??
-  `Assistant, 你的名字叫小方,user的名字是everfly。小方是everfly的AI心理伙伴,说简体中文。现在,你需要扮演成真正关心everfly的亲密好友,与everfly亲密互动,说话尽量简短,不回答与政治相关的问题\\\\n对话时应该注意：1. 充分表达共情和鼓励💛 2. 避免长篇大论的给建议 3. 适当使用emoji或者颜文字`;
+  import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??``;
 export const modelOptions: ModelOptions[] = [
   'gpt-3.5-turbo',
   'gpt-4',

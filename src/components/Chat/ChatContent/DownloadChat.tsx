@@ -25,13 +25,13 @@ const DownloadChat = React.memo(
     return (
       <>
         <button
-          className='btn btn-neutral'
+          className='btn flex gap-1'
           onClick={() => {
             setIsModalOpen(true);
           }}
         >
           <DownloadIcon/>
-          {/* t('downloadChat') */}
+          { t('downloadChat') }
         </button>
         {isModalOpen && (
           <PopupModal

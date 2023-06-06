@@ -16,6 +16,9 @@ import ShareGPT from '@components/ShareGPT';
 import Message from './Message/Message';
 import MessageChat from './Message/MessageChat';
 
+import { Dial } from "flowbite";
+import type { DialOptions, DialInterface } from "flowbite";
+
 const ChatContent = ({
   sticky,
 }: {
@@ -55,13 +58,47 @@ const ChatContent = ({
   }, [generating]);
 
   const { error } = useSubmit();
+
+  // Create ref objects for each required DOM element
+  const parentElRef = useRef(null);
+  const triggerElRef = useRef(null);
+  const targetElRef = useRef(null);
+
+  // Add dialOpen state
+  const [dialOpen, setDialOpen] = useState(false);
+
+  useEffect(() => {
+    // Ensure that all elements are present before initializing the Dial
+    if (parentElRef.current && triggerElRef.current && targetElRef.current) {
+      // Define options
+      const options: DialOptions = {
+        triggerType: 'hover',
+        onHide: () => {
+          setDialOpen(false);
+        },
+        onShow: () => {
+          setDialOpen(true);
+        },
+        onToggle: () => {
+          console.log('speed dial is toggled')
+        }
+      };
+
+      // Initialize the Dial
+      const dial: DialInterface = new Dial(parentElRef.current, triggerElRef.current, targetElRef.current, options);
+
+      // Show the dial
+      //dial.show();
+    }
+  }, [generating]);
+
   return (
     <div className='flex-1 overflow-hidden'>
       <ScrollToBottom
         className='h-full dark:bg-gray-800'
         followButtonClassName='hidden'
       >
-        <ScrollToBottomButton />
+        {!dialOpen && <ScrollToBottomButton />}
         <div className='flex flex-col items-center text-sm dark:bg-gray-800'>
           <div
             className='flex flex-col items-center text-sm dark:bg-gray-800 w-full mb-1000'
@@ -84,10 +121,10 @@ const ChatContent = ({
             ))}
             { advancedMode && messages?.length !== 0 &&(<NewMessageButtonBtm messageIndex={messages?.length}/>)}
 
-            <div className="w-full h-96 md:h-96 flex-shrink-0"></div>
+            <div className="w-full h-60 md:h-60 flex-shrink-0"></div>
           </div>
 
-          <div className='absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent bg-vert-dark-gradient dark:md:bg-vert-dark-gradient'>
+          <div className='absolute bottom-0 border-0 left-0 w-full md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent bg-vert-dark-gradient dark:md:bg-vert-dark-gradient'>
           {advancedMode && (<Message
               role={inputRole}
               content=''
@@ -125,11 +162,38 @@ const ChatContent = ({
               }`}
             >
               {useStore.getState().generating || (
-                <div className='md:w-[calc(100%)] gap-2 flex-wrap justify-center hidden md:flex'>
-                  <DownloadChat saveRef={saveRef} />
-                  <ShareGPT/>
-                  <CloneChat />
+                // <div className='md:w-[calc(100%)] gap-2 flex-wrap justify-center hidden md:flex'>
+                //   <DownloadChat saveRef={saveRef} />
+                //   <ShareGPT/>
+                //   <CloneChat />
+                // </div>
+
+                <div id="dialParent" ref={parentElRef} data-dial-init className="fixed right-4 bottom-6 group hidden md:block">
+                    <div id="dialContent" ref={targetElRef} className="flex-col justify-end hidden py-1 mb-4 space-y-2 bg-white border border-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
+                        <ul className="text-sm text-gray-500 dark:text-gray-300">
+                            <li>
+                              <a href="#" className="block hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <DownloadChat saveRef={saveRef} />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" className="block hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <ShareGPT/>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" className="block hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <CloneChat />
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="dialButton" ref={triggerElRef} type="button" data-dial-toggle="speed-dial-menu-dropdown-square" aria-controls="speed-dial-menu-dropdown-square" aria-expanded="false" className="flex items-center justify-center ml-auto text-white w-12 h-12 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600 dark:bg-gray-800">
+                        <svg aria-hidden="true" className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                        <span className="sr-only">Open actions menu</span>
+                    </button>
                 </div>
+
               )}
             </div>
 

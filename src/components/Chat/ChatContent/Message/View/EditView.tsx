@@ -200,7 +200,7 @@ const EditView = ({
       )}
 
       <div
-        className={`w-full ${
+        className={`relative w-[calc(100%)] ${
           sticky
             ? 'py-2 md:py-3 px-2 md:px-4 border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]'
             : ''
@@ -208,12 +208,12 @@ const EditView = ({
       >
         <textarea
           ref={textareaRef}
-          className='m-0 resize-none rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 w-full placeholder:text-gray-500/40'
+          className='m-0 resize-none border-0 p-0 rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 w-[calc(100%-50px)] placeholder:text-gray-500/40'
           onChange={(e) => {
             _setContent(e.target.value);
           }}
           value={_content}
-          placeholder={t('submitPlaceholder') as string}
+          placeholder={sticky?t('submitPlaceholderbtm') as string:t('submitPlaceholder') as string}
           onKeyDown={handleKeyDown}
           rows={1}
         ></textarea>

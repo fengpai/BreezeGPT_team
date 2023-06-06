@@ -134,9 +134,9 @@ const AboutMenu = () => {
                 <p>{t('support.paragraph4', { ns: 'about' })}</p>
               </> */}
               <h2 className='text-lg font-bold'>
-                Friendly GPT Playground
+                BreezeGPT
               </h2>
-              <p>Friendly GPT Playground是一个增强和优化GPT Playground使用体验的开源项目，由Quentin Zhang发起，目前是1.0版本。</p>
+              <p>An alternate GPT UI that provides smooth use experience.</p>
 
               {/* <h2 className='text-lg font-bold'>
                 {t('privacyStatement.title', { ns: 'about' })}

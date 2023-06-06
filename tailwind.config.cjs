@@ -11,7 +11,11 @@ function parentSiblingHoverPlugin({ addVariant, e }) {
 }
 
 module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html', './src/**/*.{js,ts,jsx,tsx}',
+    //'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'  
+    "./node_modules/flowbite/**/*.js"
+  ],
   theme: {
     fontFamily: {
       sans: [
@@ -73,6 +77,9 @@ module.exports = {
       }
     },
   },
-  plugins: [require('@tailwindcss/typography'), parentSiblingHoverPlugin],
+  plugins: [
+    require('@tailwindcss/typography'), parentSiblingHoverPlugin,
+    require('flowbite/plugin')
+  ],
   darkMode: 'class',
 };

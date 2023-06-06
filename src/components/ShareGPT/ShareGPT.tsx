@@ -43,13 +43,13 @@ const ShareGPT = React.memo(() => {
   return (
     <>
       <button
-        className='btn btn-neutral'
+        className='btn flex gap-1'
         onClick={() => {
           setIsModalOpen(true);
         }}
       >
-        <ShareIcon />
-        {/* {t('postOnShareGPT.title')} */}
+        <ShareIcon /> 
+        {t('postOnShareGPT.title')}
       </button>
       {isModalOpen && (
         <PopupModal

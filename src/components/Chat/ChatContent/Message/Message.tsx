@@ -54,6 +54,8 @@ const Message = React.memo(
                 messageIndex={messageIndex}
                 sticky={sticky}
               />} */}
+            {/* {advancedMode ||
+              <div>{role}</div>} */}
             {sticky && (<SubmitButton
               role={role}
               content={content}

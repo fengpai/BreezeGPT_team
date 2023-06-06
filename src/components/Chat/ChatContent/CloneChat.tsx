@@ -45,7 +45,7 @@ const CloneChat = React.memo(() => {
   };
 
   return (
-    <button className='btn btn-neutral flex gap-1' onClick={cloneChat}>
+    <button className='btn flex gap-1' onClick={cloneChat}>
       {cloned ? (
         <>
           <TickIcon /> {t('cloned')}
@@ -53,7 +53,7 @@ const CloneChat = React.memo(() => {
       ) : (
         <>
         <DuplicateIcon />
-        {/* {t('cloneChat')} */}
+        {t('cloneChat')}
         </>
       )}
     </button>
