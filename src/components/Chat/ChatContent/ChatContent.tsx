@@ -119,7 +119,7 @@ const ChatContent = ({
                 {/* {!generating && advancedMode && (messages?.length <= index+1) && <NewMessageButton messageIndex={index} />} */}
               </React.Fragment>
             ))}
-            { advancedMode && messages?.length !== 0 &&(<NewMessageButtonBtm messageIndex={messages?.length}/>)}
+            {!generating && advancedMode && messages?.length !== 0 &&(<NewMessageButtonBtm messageIndex={messages?.length}/>)}
 
             <div className="w-full h-60 md:h-60 flex-shrink-0"></div>
           </div>

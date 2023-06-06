@@ -208,7 +208,13 @@ const EditView = ({
       >
         <textarea
           ref={textareaRef}
-          className='m-0 resize-none border-0 p-0 rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 w-[calc(100%-50px)] placeholder:text-gray-500/40'
+          className={`m-0 resize-none border-0 p-0 rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 
+          ${
+            sticky
+              ?'w-[calc(100%-50px)]'
+              :'w-[calc(100%)]'
+          }
+          placeholder:text-gray-500/40`}
           onChange={(e) => {
             _setContent(e.target.value);
           }}

@@ -154,7 +154,8 @@ const ContentView = memo(
             <>
               {!useStore.getState().generating &&
                 role === 'assistant' &&
-                messageIndex === lastMessageIndex && (
+                messageIndex === lastMessageIndex && 
+                messageIndex !== 0 &&(
                   <RefreshButton onClick={handleRefresh} />
                 )}
               {messageIndex !== 0 && advancedMode && <UpButton onClick={handleMoveUp} />}
