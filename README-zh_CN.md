@@ -4,7 +4,7 @@
     <a href="https://breezegpt.dev" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
 </p>
 
-<h4 align="center"><b>一个更加顺滑、自然的ChatGPT使用界面</b></h4>
+<h4 align="center"><b>更加顺滑、自然的ChatGPT使用界面</b></h4>
 
 <p align="center">
     <a href="https://breezegpt.dev">Demo网站</a>
@@ -14,7 +14,7 @@
 
 ## BreezeGPT的项目由来
 
-“工欲善其事，必先利其器”。由于工作的关系，我需要经常做提示语（Prompt）的调试，也一直在寻找好用的Prompt开发工具。偶然的机会我发现了Better ChatGPT这个优秀的项目，它包含了一些Chat原生界面所没有的feature，比如在对话的任意位置上插入System角色的content，为我的日常工作提供了更大的灵活性。
+“工欲善其事，必先利其器”。由于工作的关系，我需要经常做提示语（Prompt）的调试，也一直在寻找好用的Prompt开发工具。偶然的机会我发现了[Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main)这个优秀的开源项目，它包含了一些Chat原生界面所没有的feature，比如在对话的任意位置上插入System角色的content，为我的日常工作提供了更大的灵活性。
 
 不过我在使用Better ChatGPT的过程中，觉得它的交互界面用起来不太顺手，于是我的强迫症犯了，决定自己动手在Better ChatGPT的代码基础上进行一些二次开发，目标是创造一个更加自然、友好的ChatGPT使用界面。
 
@@ -76,7 +76,7 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
    - [node.js](https://nodejs.org/en/)
    - [yarn](https://yarnpkg.com/) 或者 [npm](https://www.npmjs.com/)
 
-2. 通过运行 `git clone https://github.com/ztjhz/BetterChatGPT.git` 克隆此[存储库](https://github.com/ztjhz/BetterChatGPT)。
+2. 通过运行 `git clone https://github.com/quentinzhang/BreezeGPT.git` 克隆此[存储库](https://github.com/ztjhz/BetterChatGPT)。
 3. 进入目录通过 `cd BetterChatGPT`
 4. 运行 `yarn` 或 `npm install`，具体取决于您是否安装了 yarn 或 npm。
 5. 运行 `yarn dev` 或 `npm run dev` 来启动应用程序。
@@ -84,8 +84,8 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 
 ## 使用方法
 
-首次使用时，需要您输入OpenAI的API Key [获取](https://platform.openai.com/account/api-keys)
-你还可以选择使用自己的API端点代理
+- 首次使用时，需要您输入OpenAI的API Key [获取](https://platform.openai.com/account/api-keys)
+- 你还可以选择使用自己的API端点代理
 
 ## ⭐️ 支持和鼓励
 

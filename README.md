@@ -1,4 +1,4 @@
-<h1 align="center"><b>Better ChatGPT</b></h1>
+<h1 align="center"><b>BreezeGPT</b></h1>
 
 <p align="center">
    English Version |
@@ -8,56 +8,28 @@
 </p>
 
 <p align="center">
-    <a href="https://bettergpt.chat" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
+    <a href="https://breezegpt.dev" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
 </p>
 
-<h4 align="center"><b>Free, Powerful, Limitless, Intelligent, Engaging</b></h4>
+<h4 align="center"><b>A more slick and natural user interface for ChatGPT</b></h4>
 
 <p align="center">
-<a href="https://github.com/ztjhz/BetterChatGPT/blob/main/LICENSE" target="_blank">
-<img src="https://img.shields.io/github/license/ztjhz/BetterChatGPT?style=flat-square" alt="licence" />
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/fork" target="_blank">
-<img src="https://img.shields.io/github/forks/ztjhz/BetterChatGPT?style=flat-square" alt="forks"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/stargazers" target="_blank">
-<img src="https://img.shields.io/github/stars/ztjhz/BetterChatGPT?style=flat-square" alt="stars"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/issues" target="_blank">
-<img src="https://img.shields.io/github/issues/ztjhz/BetterChatGPT?style=flat-square" alt="issues"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/pulls" target="_blank">
-<img src="https://img.shields.io/github/issues-pr/ztjhz/BetterChatGPT?style=flat-square" alt="pull-requests"/>
-</a>
-<a href="https://twitter.com/intent/tweet?text=👋%20Check%20this%20amazing%20repo%20https://github.com/ztjhz/BetterChatGPT,%20created%20by%20@nikushii_"><img src="https://img.shields.io/twitter/url?label=Share%20on%20Twitter&style=social&url=https%3A%2F%2Fgithub.com%2Fztjhz%2FBetterChatGPT"></a>
-</p>
-
-<p align="center">
-    <a href="https://bettergpt.chat">Enter Website</a>
+    <a href="https://breezegpt.dev">Demo website</a>
     ·
-    <a href="https://github.com/ztjhz/BetterChatGPT/issues/new/choose">Report Bug</a>
-    ·
-    <a href="https://github.com/ztjhz/BetterChatGPT/issues/new/choose">Request Feature</a>
-</p>
-<p align="center"><i>Did you enjoy using Better ChatGPT? Give it some love with a star! 🌟</i></p>
-
-## 👋🏻 Introducing Better ChatGPT
-
-<p align="center">
-    <a href="https://bettergpt.chat" target="_blank">
-        <img src="assets/preview.png" alt="landing" width=500 />
-    </a>
+    <a href="https://github.com/quentinzhang/BreezeGPT/issues">Report an issue</a>
 </p>
 
-Are you ready to unlock the full potential of ChatGPT with Better ChatGPT?
+## The Origin of the BreezeGPT Project
 
-Better ChatGPT is the ultimate destination for anyone who wants to experience the limitless power of conversational AI. With no limits and completely free to use for all, our app harnesses the full potential of OpenAI's ChatGPT API to offer you an unparalleled chatbot experience.
+Because of my work, I often have to do Prompt testing and have always been looking for a good Prompt development tool. By chance, I discovered the excellent project, [Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main), which includes some features that the original ChatGPT interface does not have, such as inserting system role content at any position in the dialogue. It provides greater flexibility for my daily work.
 
-Whether you're looking to chat with a virtual assistant, improve your language skills, or simply enjoy a fun and engaging conversation, our app has got you covered. So why wait? Join us today and explore the exciting world of Better ChatGPT!
+However, I found the user interface of Better ChatGPT a bit cumbersome. So, my obsession kicked in and I decided to do some secondary development on the code base of Better ChatGPT, aiming to create a more natural and friendly user interface for ChatGPT.
 
-# 🔥 Features
+I've always believed that a good tool can not only improve efficiency, but also make people feel relaxed and comfortable. So, I gave this open-source project a bit of a provocative name, BreezeGPT, in the hope of providing everyone with a smooth, natural ChatGPT user experience, just like a gentle breeze.
 
-Better ChatGPT comes with a bundle of amazing features! Here are some of them:
+## Features
+
+BreezeGPT maintains most of the distinctive features of Better ChatGPT, including:
 
 - Proxy to bypass ChatGPT regional restrictions
 - Prompt library
@@ -76,102 +48,55 @@ Better ChatGPT comes with a bundle of amazing features! Here are some of them:
 - Azure OpenAI endpoint support
 - Multiple language support (i18n)
 
-# 🛠️ Usage
+For a more detailed introduction to the features, please visit: ：https://github.com/ztjhz/BetterChatGPT/blob/main/README.md
 
-To get started, simply visit our website at <https://bettergpt.chat/>. There are 3 ways for you to start using Better ChatGPT.
+## UI Optimization
 
-1. Enter into the API menu your OpenAI API Key obtained from [OpenAI API Keys](https://platform.openai.com/account/api-keys).
-2. Utilise the api endpoint proxy provided by [ayaka14732/ChatGPTAPIFree](https://github.com/ayaka14732/ChatGPTAPIFree) (if you are in a region with no access to ChatGPT)
-3. Host your own API endpoint by following the instructions provided here: <https://github.com/ayaka14732/ChatGPTAPIFree>. Subsequently, enter the API endpoint into the API menu.
+Meanwhile, BreezeGPT has made a lot of adjustments and trials on the UI interface of ChatGPT. First, I believe that a product should have a clear, distinct audience. So, I renamed the original "Advanced Mode" to "Developer Mode", to meet developers' pursuit of flexibility and efficiency when debugging prompts. The regular mode, on the other hand, is designed to be simple and easy to use, akin to the native ChatGPT chat interface. Many adjustments have been made to the features and UI under these two modes based on this idea.
 
-## Desktop App
+Here is a list of specific UI improvements:
 
-Download the desktop app [here](https://github.com/ztjhz/BetterChatGPT/releases)
+### For Developer Mode:
+- Auto-saving during the prompt editing process, no more worries about message loss
+- Easier role-switching by clicking on the avatar (usually requiring fewer clicks than using the drop-down menu)
+- Smarter message deletion, with one-click deletion of empty messages without confirmation
+- Entering and exiting message editing mode with a single click in the message and other content areas
+- De-emphasizing the function of inserting messages in the middle of the conversation
+- Placing the reply generation button at the bottom of the page for a more consistent interface
 
-| OS      | Download  |
-| ------- | --------- |
-| Windows | .exe      |
-| MacOS   | .dmg      |
-| Linux   | .AppImage |
+### For Chat Mode:
+- Fixing the function area for writing and sending messages at the bottom of the page, instead of having it scroll with the page content
+  - Simplifying by removing some less frequently used features in everyday chat, such as:
+  - Removing the function of freely sorting dialogue messages by moving them up and down
+  - Removing the function of inserting messages in the middle of the dialogue
+  - Removing the function of freely switching dialogue roles
+  - Removing the function of inserting system roles at the top of the dialogue
 
-### Features:
+### For Both Modes:
+- Differentiating whether it's GPT-3.5 or GPT-4 by the color of the assistant user icon
+- Collapsing infrequently used operations such as sharing, downloading, copying dialogues, etc., into the Speed Dial menu at the lower right corner
 
-- Unlimited local storage
-- Runs locally (access Better ChatGPT even if the website is not accessible)
+## Runing locally
 
-# 🛫 Host your own Instance
-
-If you'd like to run your own instance of Better ChatGPT, you can easily do so by following these steps:
-
-## Vercel
-
-One click deploy with Vercel
-
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fztjhz%2FBetterChatGPT)
-
-## GitHub Pages
-
-### Steps
-
-1. Create a GitHub account (if you don't have one already)
-1. Star this [repository](https://github.com/ztjhz/BetterChatGPT) ⭐️
-1. Fork this [repository](https://github.com/ztjhz/BetterChatGPT)
-1. In your forked repository, navigate to the `Settings` tab
-   ![image](https://user-images.githubusercontent.com/59118459/223753577-9b6f8266-26e8-471b-8f45-a1a02fbab232.png)
-1. In the left sidebar, click on `Pages` and in the right section, select `GitHub Actions` for `source`.
-   ![image](https://user-images.githubusercontent.com/59118459/227568881-d8fb7baa-f890-4dee-8fc2-b6b429ba2098.png)
-1. Now, click on `Actions`
-   ![image](https://user-images.githubusercontent.com/59118459/223751928-cf2b91b9-4663-4a36-97de-5eb751b32c7e.png)
-1. In the left sidebar, click on `Deploy to GitHub Pages`
-   ![image](https://user-images.githubusercontent.com/59118459/223752459-183ec23f-72f5-436e-a088-e3386492b8cb.png)
-1. Above the list of workflow runs, select `Run workflow`.
-   ![image](https://user-images.githubusercontent.com/59118459/223753340-1270e038-d213-4d6f-938c-66a30dad7c88.png)
-1. Navigate back to the `Settings` tab
-   ![image](https://user-images.githubusercontent.com/59118459/223753577-9b6f8266-26e8-471b-8f45-a1a02fbab232.png)
-1. In the left sidebar, click on `Pages` and in the right section. Then at the top section, you can see that "Your site is live at `XXX`".
-   ![image](https://user-images.githubusercontent.com/59118459/227568881-d8fb7baa-f890-4dee-8fc2-b6b429ba2098.png)
-
-### Running it locally
-
-1. Ensure that you have the following installed:
+1. Running the Project
+Ensure you have installed the following:
 
    - [node.js](https://nodejs.org/en/)
    - [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
 
-2. Clone this [repository](https://github.com/ztjhz/BetterChatGPT) by running `git clone https://github.com/ztjhz/BetterChatGPT.git`
-3. Navigate into the directory by running `cd BetterChatGPT`
-4. Run `yarn` or `npm install`, depending on whether you have yarn or npm installed.
-5. Launch the app by running `yarn dev` or `npm run dev`
+1. Clone the repository by running `git clone https://github.com/quentinzhang/BreezeGPT.git` to clone the repository
+2. Enter the directory by `cd BetterChatGPT`
+3. Run `yarn` or `npm install`, depending on whether you have installed yarn or npm.
+4. Run `yarn dev` or `npm run dev` to launch the development environment
+5. Run `yarn build` or `npm run build` to compile for production.
 
-# ⭐️ Star History
+## Usage
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ztjhz/BetterChatGPT&type=Date)](https://github.com/ztjhz/BetterChatGPT/stargazers)
+- For first-time users, you need to enter your OpenAI API Key. You can also choose to use your own API endpoint proxy. [Fetch](https://platform.openai.com/account/api-keys)
+- You can also choose to use your own API endpoint proxy.
+
+## ⭐️ Support me
 
 <h3 align="center">
-A ⭐️ to <b>Better ChatGPT</b> is to make it shine brighter and benefit more people.
+    Give <b>BreezeGPT</b>  BreezeGPT a star  ⭐️，and give me some encouragement and motivation to move on❤️
 </h3>
-
-# ❤️ Contributors
-
-Thanks to all the contributors!
-
-<a href="https://github.com/ztjhz/BetterChatGPT/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ztjhz/BetterChatGPT" />
-</a>
-
-# 🙏 Support
-
-At Better ChatGPT, we strive to provide you with useful and amazing features around the clock. And just like any project, your support and motivation will be instrumental in helping us keep moving forward!
-
-If you have enjoyed using our app, we kindly ask you to give this project a ⭐️. Your endorsement means a lot to us and encourages us to work harder towards delivering the best possible experience.
-
-If you would like to support the team, consider sponsoring us through one of the methods below. Every contribution, no matter how small, helps us to maintain and improve our service.
-
-| Payment Method | Link                                                                                                                                                 |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitHub         | [![GitHub Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/ztjhz) |
-| KoFi           | [![support](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/betterchatgpt)                                                             |
-| Alipay (Ayaka) | <img src="https://ayaka14732.github.io/sponsor/alipay.jpg" width=150 />                                                                              |
-| Wechat (Ayaka) | <img src="https://ayaka14732.github.io/sponsor/wechat.png" width=150 />                                                                              |
-
-Thank you for being a part of our community, and we look forward to serving you better in the future.
