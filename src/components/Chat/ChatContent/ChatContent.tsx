@@ -170,7 +170,7 @@ const ChatContent = ({
 
                 <div id="dialParent" ref={parentElRef} data-dial-init className="fixed right-4 bottom-6 group hidden md:block">
                     <div id="dialContent" ref={targetElRef} className="flex-col justify-end hidden py-1 mb-4 space-y-2 bg-white border border-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
-                        <ul className="text-sm text-gray-500 dark:text-gray-300">
+                        <ul className="text-sm text-black dark:text-gray-300">
                             <li>
                               <a href="#" className="block hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 <DownloadChat saveRef={saveRef} />
@@ -188,7 +188,7 @@ const ChatContent = ({
                             </li>
                         </ul>
                     </div>
-                    <button id="dialButton" ref={triggerElRef} type="button" data-dial-toggle="speed-dial-menu-dropdown-square" aria-controls="speed-dial-menu-dropdown-square" aria-expanded="false" className="flex items-center justify-center ml-auto text-white w-12 h-12 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600 dark:bg-gray-800">
+                    <button id="dialButton" ref={triggerElRef} type="button" data-dial-toggle="speed-dial-menu-dropdown-square" aria-controls="speed-dial-menu-dropdown-square" aria-expanded="false" className="flex items-center justify-center ml-auto w-12 h-12 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600 dark:bg-gray-800">
                         <svg aria-hidden="true" className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
                         <span className="sr-only">Open actions menu</span>
                     </button>

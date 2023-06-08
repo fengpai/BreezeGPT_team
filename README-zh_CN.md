@@ -1,47 +1,28 @@
 <h1 align="center"><b>BreezeGPT</b></h1>
 
 <p align="center">
-    <a href="https://bettergpt.chat" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
+    <a href="https://breezegpt.dev" target="_blank"><img src="public/apple-touch-icon.png" alt="Better ChatGPT" width="100" /></a>
 </p>
 
-<h4 align="center"><b>更强大、更易用的ChatGPT Playground</b></h4>
+<h4 align="center"><b>一个更加顺滑、自然的ChatGPT使用界面</b></h4>
 
 <p align="center">
-<a href="https://github.com/ztjhz/BetterChatGPT/blob/main/LICENSE" target="_blank">
-<img src="https://img.shields.io/github/license/ztjhz/BetterChatGPT?style=flat-square" alt="licence" />
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/fork" target="_blank">
-<img src="https://img.shields.io/github/forks/ztjhz/BetterChatGPT?style=flat-square" alt="forks"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/stargazers" target="_blank">
-<img src="https://img.shields.io/github/stars/ztjhz/BetterChatGPT?style=flat-square" alt="stars"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/issues" target="_blank">
-<img src="https://img.shields.io/github/issues/ztjhz/BetterChatGPT?style=flat-square" alt="issues"/>
-</a>
-<a href="https://github.com/ztjhz/BetterChatGPT/pulls" target="_blank">
-<img src="https://img.shields.io/github/issues-pr/ztjhz/BetterChatGPT?style=flat-square" alt="pull-requests"/>
-</a>
-<a href="https://twitter.com/intent/tweet?text=👋看看这个惊人的存储库%20https://github.com/ztjhz/BetterChatGPT，由%20@nikushii_%20创建。"><img src="https://img.shields.io/twitter/url?label=%E5%88%86%E4%BA%AB%E5%88%B0%E6%8E%A8%E7%89%B9&style=social&url=https%3A%2F%2Fgithub.com%2Fztjhz%2FBetterChatGPT"></a>
+    <a href="https://breezegpt.dev">Demo网站</a>
+    ·
+    <a href="https://github.com/quentinzhang/BreezeGPT/issues">反馈问题</a>
 </p>
 
-<p align="center">
-    <a href="https://bettergpt.chat">进入网站</a>
-    ·
-    <a href="https://github.com/ztjhz/BetterChatGPT/issues/new/choose">反馈问题</a>
-    ·
-    <a href="https://github.com/ztjhz/BetterChatGPT/issues/new/choose">请求功能</a>
-</p>
+## BreezeGPT的项目由来
 
-## 关于BreezeGPT
+“工欲善其事，必先利其器”。由于工作的关系，我需要经常做提示语（Prompt）的调试，也一直在寻找好用的Prompt开发工具。偶然的机会我发现了Better ChatGPT这个优秀的项目，它包含了一些Chat原生界面所没有的feature，比如在对话的任意位置上插入System角色的content，为我的日常工作提供了更大的灵活性。
 
-BreezeGPT是在BetterChatGPT基础上进行二次开发而来的项目，为了是能够进一步提升Playground的使用体验，感谢卓越的工作。
+不过我在使用Better ChatGPT的过程中，觉得它的交互界面用起来不太顺手，于是我的强迫症犯了，决定自己动手在Better ChatGPT的代码基础上进行一些二次开发，目标是创造一个更加自然、友好的ChatGPT使用界面。
 
-我们在利用ChatGPT进行开发的过程中，发现OpenAI官方提供的Playground存在一定的局限性。
+我一直认为：好的工具不仅能够带给人们效率的提升，而且还可以让人感到身心舒爽。所以我给这个开源项目起了BreezeGPT这个有点骚气的名字——希望带给每个人轻风拂面一般顺滑、自然的ChatGPT使用体验。
 
 # 🔥 功能
 
-Better ChatGPT 已经包含了大量的功能。您可以使用以下功能：
+BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 
 - 支持使用内置代理解決 ChatGPT 地区限制
 - 支持自定义提示词资料库
@@ -60,62 +41,33 @@ Better ChatGPT 已经包含了大量的功能。您可以使用以下功能：
 - 支持 Azure OpenAI 终端
 - 支持多语言 (i18n)
 
-# 🛠️ 使用方法
+更详细的功能介绍请移步：
 
-要开始使用，只需访问我们的网站：<https://bettergpt.chat/>。您有 3 种方法可以开始使用 Better ChatGPT。
+与此同时，BreezeGPT在ChatGPT的UI界面上做出了很多调整和尝试。首先，我认为产品应该有清晰、明确的受众。所以我将原版中的“高级模式”改为“开发模式”，以此对标ChatGPT的Playground，满足开发者调试Prompt的所追求的灵活与高效。而常规模式则对标原生ChatGPT的聊天界面，设计目标是简洁、易用。这两个模式下的功能与UI也依据此思路做了很多调整。
 
-1. 在 API 菜单中输入您从 [OpenAI API Keys](https://platform.openai.com/account/api-keys) 获得的 OpenAI API 密钥。
-2. 使用提供的 API 端点代理：[ayaka14732/ChatGPTAPIFree](https://github.com/ayaka14732/ChatGPTAPIFree)。（如果您所在的区域无法访问 ChatGPT）
-3. 按照这里提供的说明托管自己的 API 端点：<https://github.com/ayaka14732/ChatGPTAPIFree>。随后，在 API 菜单中输入 API 端点。
+以下是具体的UI改进列表：
 
-## 桌面应用
+适用于开发模式：
+- 增加编辑Prompt的过程的自动保存，不必再担心消息丢失
+- 可以通过点击头像更方便的切换角色（通常可以比点击下拉菜单的方式更少点击实现目的）
+- 删除对话消息更加智能，空消息一键删除无需确认
+- 可通过单击消息和其他内容区域一键进入和退出消息编辑模式
+- 弱化了在对话中间插入消息的入口
+- 将生成回复的按钮统一放在页面底部，增加了界面的稳定一致性
 
-在此下载桌面应用程序：<https://github.com/ztjhz/BetterChatGPT/releases/>
+适用于常规模式：
+- 将撰写和发送消息的功能区固定在页面底部，而不是随页面内容滚动
+- 删繁就简，对一些日常聊天对话中不常用的功能做了舍弃，比如：
+  - 去掉了对话消息通过上下移动自由排序的功能
+  - 去掉了在对话中间插入消息的功能
+  - 去掉了随意切换对话角色的功能
+  - 去掉了在对话最上方插入系统角色的功能
 
-| 操作系统 | 下载      |
-| -------- | --------- |
-| Windows  | .exe      |
-| MacOS    | .dmg      |
-| Linux    | .AppImage |
+适用于两种模式：
+- 可以通过assistant用户图标的颜色区分是GPT-3.5还和GPT-4
+- 将分享、下载、复制对话等不常用的操作折叠放在右下角的Speed Dial菜单中
 
-### 功能
-
-- 无限本地存储
-- 本地运行（即使无法访问 Better ChatGPT 网站也可以使用）
-
-# 🛫 托管自己的实例
-
-如果您想运行自己的 Better ChatGPT 实例，可以按照以下步骤轻松完成：
-
-## Vercel
-
-使用 Vercel 一键部署
-
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fztjhz%2FBetterChatGPT)
-
-## GitHub 页面
-
-### 步骤
-
-1. 创建一个 GitHub 账户（如果您还没有账户）。
-1. 给此[存储库](https://github.com/ztjhz/BetterChatGPT) 一个星星 ⭐️
-1. Fork 此[存储库](https://github.com/ztjhz/BetterChatGPT)
-1. 在 fork 之后的存储库中点击 `Settings` 选项卡
-   ![image](https://user-images.githubusercontent.com/59118459/223753577-9b6f8266-26e8-471b-8f45-a1a02fbab232.png)
-1. 在左侧边栏中，单击 `Pages` ，在右侧区域中，为 `Source` 选择 `GitHub Actions`。
-   ![image](https://user-images.githubusercontent.com/59118459/227568881-d8fb7baa-f890-4dee-8fc2-b6b429ba2098.png)
-1. 现在点击 `Actions`
-   ![image](https://user-images.githubusercontent.com/59118459/223751928-cf2b91b9-4663-4a36-97de-5eb751b32c7e.png)
-1. 在左侧边栏中，点击 `Deploy to GitHub Pages`
-   ![image](https://user-images.githubusercontent.com/59118459/223752459-183ec23f-72f5-436e-a088-e3386492b8cb.png)
-1. 在运行的工作流列表上方，选择 `Run workflow` 。
-   ![image](https://user-images.githubusercontent.com/59118459/223753340-1270e038-d213-4d6f-938c-66a30dad7c88.png)
-1. 返回到 `Settings` 选项卡
-   ![image](https://user-images.githubusercontent.com/59118459/223753577-9b6f8266-26e8-471b-8f45-a1a02fbab232.png)
-1. 在左侧边栏中，单击 `Pages` 。然后在顶部部分，您可以看到 "Your site is live at `XXX`"。
-   ![image](https://user-images.githubusercontent.com/59118459/227568881-d8fb7baa-f890-4dee-8fc2-b6b429ba2098.png)
-
-### 在本地运行
+# 运行项目
 
 1. 确保您已安装以下内容：
 
@@ -126,36 +78,15 @@ Better ChatGPT 已经包含了大量的功能。您可以使用以下功能：
 3. 进入目录通过 `cd BetterChatGPT`
 4. 运行 `yarn` 或 `npm install`，具体取决于您是否安装了 yarn 或 npm。
 5. 运行 `yarn dev` 或 `npm run dev` 来启动应用程序。
+6. 运行 `yarn build` 或 `npm run build` 为生产环境生成编译文件
+
+# 使用方法
+
+首次使用时，需要您输入OpenAI的API Key [获取](https://platform.openai.com/account/api-keys)
+你还可以选择使用自己的API端点代理
 
 # ⭐️ 星星历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ztjhz/BetterChatGPT&type=Date)](https://github.com/ztjhz/BetterChatGPT/stargazers)
-
 <h3 align="center">
-    给 <b>Better ChatGPT</b> 一个星星 ⭐️ 可以让它更加锦上添花，让更多人受益匪浅。
+    给 <b>BreezeGPT</b> 一个星星 ⭐️，给我一点鼓励❤️
 </h3>
-
-# ❤️ 贡献者
-
-感谢所有贡献者！
-
-<a href="https://github.com/ztjhz/BetterChatGPT/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ztjhz/BetterChatGPT" />
-</a>
-
-# 🙏 支持
-
-在 Better ChatGPT，我们致力于为您提供实用和惊人的功能。就像任何项目一样，您的支持和激励将对我们在保持前进方面起到至关重要的作用！
-
-如果您喜欢使用我们的应用程序，我们恳请您给这个项目一颗 ⭐️。您的认可对我们意义重大，鼓励我们更加努力，以提供最佳的体验。
-
-如果您想支持我们的团队，请考虑通过以下方法之一赞助我们。每一份贡献，无论多小，都有助于我们维护和改善我们的服务。
-
-| 付款方式       | 链接                                                                                                                                                 |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 支付宝 (Ayaka) | <img src="https://ayaka14732.github.io/sponsor/alipay.jpg" width=150 />                                                                              |
-| 微信 (Ayaka)   | <img src="https://ayaka14732.github.io/sponsor/wechat.png" width=150 />                                                                              |
-| GitHub         | [![GitHub Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/ztjhz) |
-| KoFi           | [![support](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/betterchatgpt)                                                             |
-
-感谢您成为我们社区的一员，我们期待着在未来为您提供更好的服务。
