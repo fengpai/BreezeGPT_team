@@ -12,7 +12,7 @@
     <a href="https://github.com/quentinzhang/BreezeGPT/issues">反馈问题</a>
 </p>
 
-## BreezeGPT的项目由来
+## 项目缘起
 
 “工欲善其事，必先利其器”。由于工作的关系，我需要经常做提示语（Prompt）的调试，也一直在寻找好用的Prompt开发工具。偶然的机会我发现了[Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main)这个优秀的开源项目，它包含了一些Chat原生界面所没有的feature，比如在对话的任意位置上插入System角色的content，为我的日常工作提供了更大的灵活性。
 

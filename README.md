@@ -19,7 +19,7 @@
     <a href="https://github.com/quentinzhang/BreezeGPT/issues">Report an issue</a>
 </p>
 
-## The Origin of the BreezeGPT Project
+## The Origin of the Project
 
 Because of my work, I often have to do Prompt testing and have always been looking for a good Prompt development tool. By chance, I discovered the excellent project, [Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main), which includes some features that the original ChatGPT interface does not have, such as inserting system role content at any position in the dialogue. It provides greater flexibility for my daily work.
 
@@ -50,7 +50,7 @@ BreezeGPT maintains most of the distinctive features of Better ChatGPT, includin
 
 For a more detailed introduction to the features, please visit: ：https://github.com/ztjhz/BetterChatGPT/blob/main/README.md
 
-## UI Optimization
+## UI Optimizations
 
 Meanwhile, BreezeGPT has made a lot of adjustments and trials on the UI interface of ChatGPT. First, I believe that a product should have a clear, distinct audience. So, I renamed the original "Advanced Mode" to "Developer Mode", to meet developers' pursuit of flexibility and efficiency when debugging prompts. The regular mode, on the other hand, is designed to be simple and easy to use, akin to the native ChatGPT chat interface. Many adjustments have been made to the features and UI under these two modes based on this idea.
 
