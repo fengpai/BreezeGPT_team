@@ -54,6 +54,10 @@ For a more detailed introduction to the features, please visit: ：https://githu
 
 Meanwhile, BreezeGPT has made a lot of adjustments and trials on the UI interface of ChatGPT. First, I believe that a product should have a clear, distinct audience. So, I renamed the original "Advanced Mode" to "Developer Mode", to meet developers' pursuit of flexibility and efficiency when debugging prompts. The regular mode, on the other hand, is designed to be simple and easy to use, akin to the native ChatGPT chat interface. Many adjustments have been made to the features and UI under these two modes based on this idea.
 
+| Regular Chat Mode | Prompt Dev Mode |
+|:---:|:---:|
+| ![](public/normal-mode-en.png) | ![](public/dev-mode-en.png) |
+
 Here is a list of specific UI improvements:
 
 ### For Developer Mode:
