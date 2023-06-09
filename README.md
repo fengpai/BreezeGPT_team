@@ -23,7 +23,7 @@
 
 Because of my work, I often have to do Prompt testing and have always been looking for a good Prompt development tool. By chance, I discovered the excellent project, [Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main), which includes some features that the original ChatGPT interface does not have, such as inserting system role content at any position in the dialogue. It provides greater flexibility for my daily work.
 
-However, I found the user interface of Better ChatGPT a bit cumbersome. So, my obsession kicked in and I decided to do some secondary development on the code base of Better ChatGPT, aiming to create a more natural and friendly user interface for ChatGPT.
+However, I found the user interface of Better ChatGPT a bit cumbersome. So, my obsession kicked in and I decided to do some polishment work on the code base of Better ChatGPT, aiming to create a more natural and friendly user interface for ChatGPT.
 
 I've always believed that a good tool can not only improve efficiency, but also make people feel relaxed and comfortable. So, I gave this open-source project a bit of a provocative name, BreezeGPT, in the hope of providing everyone with a smooth, natural ChatGPT user experience, just like a gentle breeze.
 
@@ -70,7 +70,7 @@ Here is a list of specific UI improvements:
 
 ### For Chat Mode:
 - Fixing the function area for writing and sending messages at the bottom of the page, instead of having it scroll with the page content
-  - Simplifying by removing some less frequently used features in everyday chat, such as:
+- Simplifying by removing some less frequently used features in everyday chat, such as:
   - Removing the function of freely sorting dialogue messages by moving them up and down
   - Removing the function of inserting messages in the middle of the dialogue
   - Removing the function of freely switching dialogue roles
@@ -98,9 +98,12 @@ Ensure you have installed the following:
 
 - For first-time users, you need to enter your OpenAI API Key. You can also choose to use your own API endpoint proxy. [Fetch](https://platform.openai.com/account/api-keys)
 - You can also choose to use your own API endpoint proxy.
+- You can create a file named .env in the root directory of your project, and include some default configuration items in it (please refer to the example file: .env.example).
 
 ## ⭐️ Support me
 
-<h3 align="center">
-    Give <b>BreezeGPT</b>  BreezeGPT a star  ⭐️，and give me some encouragement and motivation to move on❤️
-</h3>
+Give <b>BreezeGPT</b> a star  ⭐️，and give me some encouragement and motivation to move on❤️
+
+## 💗 Thanks
+
+Thanks to the developers of Better ChatGPT project. BreezeGPT wont' be created without your great work as a basis.

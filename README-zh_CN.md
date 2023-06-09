@@ -41,7 +41,7 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 - 支持 Azure OpenAI 终端
 - 支持多语言 (i18n)
 
-更详细的功能介绍请移步：https://github.com/ztjhz/BetterChatGPT/blob/main/README-zh_CN.md
+关于Better ChatGP更详细的功能介绍请移步：https://github.com/ztjhz/BetterChatGPT/blob/main/README-zh_CN.md
 
 ## 界面优化
 
@@ -90,9 +90,11 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 
 - 首次使用时，需要您输入OpenAI的API Key [获取](https://platform.openai.com/account/api-keys)
 - 你还可以选择使用自己的API端点代理
+- 你可以在项目根目录下创建一个名为.env的文件，将一些默认的配置项目包含其中（请参照示例文件：.env.example）
 
 ## ⭐️ 支持和鼓励
 
-<h3 align="center">
-    给 <b>BreezeGPT</b> 一颗星星 ⭐️，给我一点鼓励与动力❤️
-</h3>
+给 <b>BreezeGPT</b> 一颗星星 ⭐️，给我一点鼓励与动力❤️
+
+## 感谢
+感谢Better ChatGPT项目的开发者，没有你们的项目做基础，BreezeGPT项目就不会诞生。
