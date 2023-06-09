@@ -46,5 +46,6 @@
   "submitPlaceholder": "Type a message or click [/] for prompts...",
   "submitPlaceholderbtm": "Type a message...",
   "generateAnswer": "Generate Answer",
-  "stopGenerating": "Stop Generating"
+  "stopGenerating": "Stop Generating",
+  "defaultPrompt": "You are ChatGPT, a large language model trained by OpenAI. \n Carefully heed the user's instructions. \n Respond using Markdown."
 }

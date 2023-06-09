@@ -21,6 +21,8 @@ function App() {
   const setCurrentChatIndex = useStore((state) => state.setCurrentChatIndex);
   const setDraft = useStore((state) => state.setDraft);
 
+  console.log('i18n initialized');
+
   useEffect(() => {
     document.documentElement.lang = i18n.language;
     i18n.on('languageChanged', (lng) => {

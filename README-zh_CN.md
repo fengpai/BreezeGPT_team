@@ -12,7 +12,7 @@
     <a href="https://github.com/quentinzhang/BreezeGPT/issues">反馈问题</a>
 </p>
 
-## 项目缘起
+## 项目由来
 
 “工欲善其事，必先利其器”。由于工作的关系，我需要经常做提示语（Prompt）的调试，也一直在寻找好用的Prompt开发工具。偶然的机会我发现了[Better ChatGPT](https://github.com/ztjhz/BetterChatGPT/tree/main)这个优秀的开源项目，它包含了一些Chat原生界面所没有的feature，比如在对话的任意位置上插入System角色的content，为我的日常工作提供了更大的灵活性。
 
@@ -46,6 +46,25 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 ## 界面优化
 
 与此同时，BreezeGPT在ChatGPT的UI界面上做出了很多调整和尝试。首先，我认为产品应该有清晰、明确的受众。所以我将原版中的“高级模式”改为“开发模式”，以此对标ChatGPT的Playground，满足开发者调试Prompt的所追求的灵活与高效。而常规模式则对标原生ChatGPT的聊天界面，设计目标是简洁、易用。这两个模式下的功能与UI也依据此思路做了很多调整。
+
+<table>
+  <tr>
+    <td>
+      <img src="public/normal-mode.png" alt="聊天模式" style="width: 100%;"/>
+    </td>
+    <td>
+      <img src="public/dev-mode.png" alt="开发模式" style="width: 100%;"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      聊天模式示意图
+    </td>
+    <td>
+      开发模式示意图
+    </td>
+  </tr>
+</table>
 
 以下是具体的UI改进列表：
 

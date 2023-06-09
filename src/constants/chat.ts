@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ChatInterface, ConfigInterface, ModelOptions } from '@type/chat';
 import useStore from '@store/store';
+import i18n from './../i18n';
 
 const date = new Date();
 const dateString =
@@ -11,8 +12,15 @@ const dateString =
   ('0' + date.getDate()).slice(-2);
 
 // default system message obtained using the following method: https://twitter.com/DeminDimin/status/1619935545144279040
-export const _defaultSystemMessage =
-  import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??``;
+
+const PersonIcon = () => {}
+
+export const _defaultSystemMessage = 
+  import.meta.env.VITE_DEFAULT_SYSTEM_MESSAGE ??
+  `You are ChatGPT, a large language model trained by OpenAI.
+Carefully heed the user's instructions. 
+Respond using Markdown.`; 
+  
 export const modelOptions: ModelOptions[] = [
   'gpt-3.5-turbo',
   'gpt-4',
