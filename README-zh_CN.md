@@ -47,7 +47,7 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
 
 与此同时，BreezeGPT在ChatGPT的UI界面上做出了很多调整和尝试。首先，我认为产品应该有清晰、明确的受众。所以我将原版中的“高级模式”改为“开发模式”，以此对标ChatGPT的Playground，满足开发者调试Prompt的所追求的灵活与高效。而常规模式则对标原生ChatGPT的聊天界面，设计目标是简洁、易用。这两个模式下的功能与UI也依据此思路做了很多调整。
 
-<table>
+<table style="border:0">
   <tr>
     <td>
       <img src="public/normal-mode.png" alt="聊天模式" style="width: 100%;"/>
@@ -57,11 +57,11 @@ BreezeGPT最大程度上保持了Better ChatGPT的特色功能，包括：
     </td>
   </tr>
   <tr>
-    <td>
-      聊天模式示意图
+    <td style="text-align:center">
+      常规聊天模式
     </td>
-    <td>
-      开发模式示意图
+    <td style="text-align:center">
+      Prompt开发模式
     </td>
   </tr>
 </table>
