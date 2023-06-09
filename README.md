@@ -88,7 +88,7 @@ Ensure you have installed the following:
    - [node.js](https://nodejs.org/en/)
    - [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
 
-1. Clone the repository by running `git clone https://github.com/quentinzhang/BreezeGPT.git` to clone the repository
+1. Clone the repository by running `git clone https://github.com/quentinzhang/BreezeGPT.git`
 2. Enter the directory by `cd BetterChatGPT`
 3. Run `yarn` or `npm install`, depending on whether you have installed yarn or npm.
 4. Run `yarn dev` or `npm run dev` to launch the development environment
