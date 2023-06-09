@@ -120,7 +120,7 @@ const ContentView = memo(
     return (
       <>
         <div className='markdown prose w-full md:max-w-full break-words dark:prose-invert dark share-gpt-message min-h-[28px]' onClick={handleClick}>
-          {markdownMode ? (
+          {(markdownMode || !advancedMode) ? (
             <ReactMarkdown
               remarkPlugins={[
                 remarkGfm,
@@ -158,15 +158,15 @@ const ContentView = memo(
                 messageIndex !== 0 &&(
                   <RefreshButton onClick={handleRefresh} />
                 )}
-              {messageIndex !== 0 && advancedMode && <UpButton onClick={handleMoveUp} />}
-              {messageIndex !== lastMessageIndex && advancedMode && (
+              {!useStore.getState().generating && messageIndex !== 0 && advancedMode && <UpButton onClick={handleMoveUp} />}
+              {!useStore.getState().generating && messageIndex !== lastMessageIndex && advancedMode && (
                 <DownButton onClick={handleMoveDown} />
               )}
-              {advancedMode && <NewMessageButtonInline messageIndex={messageIndex} />}
-              {advancedMode && <MarkdownModeButton />}
-              {<CopyButton onClick={handleCopy} />}
+              {!useStore.getState().generating && advancedMode && <NewMessageButtonInline messageIndex={messageIndex} />}
+              {!useStore.getState().generating && advancedMode && <MarkdownModeButton />}
+              {!useStore.getState().generating && (<CopyButton onClick={handleCopy} />)}
               {advancedMode || role === 'user' && <EditButton setIsEdit={setIsEdit} />}
-              {<DeleteButton onClick={handleDelete}/>}
+              {!useStore.getState().generating && (<DeleteButton onClick={handleDelete}/>)}
             </>
           )}
           {isDelete && (
