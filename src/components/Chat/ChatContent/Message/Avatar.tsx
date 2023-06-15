@@ -81,7 +81,7 @@ const AssistantAvatar = () => {
   return (
     <div
       className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
-      style={{ backgroundColor: (model !== 'gpt-3.5-turbo')?'#9560ea':'#19c37d' }}
+      style={{ backgroundColor: (model.startsWith("gpt-4"))?'#9560ea':'#19c37d' }}
     >
       <svg
         width='41'
