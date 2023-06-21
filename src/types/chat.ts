@@ -30,6 +30,7 @@ export interface ConfigInterface {
   presence_penalty: number;
   top_p: number;
   frequency_penalty: number;
+  functions?: any[];
 }
 
 export interface ChatHistoryInterface {

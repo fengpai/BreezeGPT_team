@@ -137,7 +137,7 @@ const ChatContent = ({
                   onChange={(e) => {
                     updateFunction(e.target.value);
                   }}
-                  placeholder = {t('fnCallPlaceholder')}
+                  placeholder = {t('fnCallPlaceholder') as string}
                   value={_functionContent}
                 ></textarea>
               </div>

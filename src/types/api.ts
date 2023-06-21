@@ -10,6 +10,7 @@ export type EventSourceData = EventSourceDataInterface | '[DONE]';
 
 export interface EventSourceDataChoices {
   delta: {
+    function_call: any;
     content?: string;
     role?: string;
   };
