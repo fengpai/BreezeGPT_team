@@ -10,6 +10,8 @@ import PopupModal from '@components/PopupModal';
 import TokenCount from '@components/TokenCount';
 import CommandPrompt from '../CommandPrompt';
 import StopGeneratingButton from '@components/StopGeneratingButton/StopGeneratingButton';
+import RefreshButtonBtm from './Button/RefreshButtonBtm';
+
 import _ from 'lodash';
 
 const EditView = ({
@@ -29,6 +31,7 @@ const EditView = ({
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const advancedMode = useStore((state) => state.advancedMode);
   const generating = useStore.getState().generating;
+  const isGenerated = useStore.getState().isGenerated;
 
   const [_content, _setContent] = useState<string>(content);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -164,6 +167,16 @@ const EditView = ({
     handleSubmit();
   };
 
+  const handleRefresh = () => {
+    const updatedChats: ChatInterface[] = JSON.parse(
+      JSON.stringify(useStore.getState().chats)
+    );
+    const updatedMessages = updatedChats[currentChatIndex].messages;
+    updatedMessages.splice(updatedMessages.length - 1, 1);
+    setChats(updatedChats);
+    handleSubmit();
+  };
+  
   const setGenerating = useStore((state) => state.setGenerating);
 
   useEffect(() => {
@@ -194,9 +207,15 @@ const EditView = ({
     <>
       {sticky && (
       <div
-      className='absolute bottom-20 left-0 right-0 m-auto flex md:w-full md:m-auto gap-0 md:gap-2 justify-center'>
+      className='absolute bottom-25 left-0 right-0 m-auto flex md:w-full md:m-auto gap-0 md:gap-2 justify-center'>
         <StopGeneratingButton />
       </div>
+      )}
+
+      {sticky && isGenerated && !generating &&(
+          <div className=''>
+              <RefreshButtonBtm onClick={handleRefresh} />
+          </div>
       )}
 
       <div

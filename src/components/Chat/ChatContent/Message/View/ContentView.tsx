@@ -60,7 +60,6 @@ const ContentView = memo(
     const advancedMode = useStore((state) => state.advancedMode);
 
     const handleDelete = () => {
-      console.log(isDelete);
       if(!content || isDelete) {
         const updatedChats: ChatInterface[] = JSON.parse(
           JSON.stringify(useStore.getState().chats)
@@ -152,6 +151,7 @@ const ContentView = memo(
         <div className='flex justify-end gap-2 w-full mt-3'>
           {isDelete || (
             <>
+              {(<div>&nbsp;</div>)}
               {!useStore.getState().generating &&
                 role === 'assistant' &&
                 messageIndex === lastMessageIndex && 

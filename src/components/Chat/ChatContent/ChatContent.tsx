@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import useStore from '@store/store';
+import { useTranslation } from 'react-i18next';
 
 import ScrollToBottomButton from './ScrollToBottomButton';
 import ChatTitle from './ChatTitle';
@@ -15,6 +16,7 @@ import CloneChat from './CloneChat';
 import ShareGPT from '@components/ShareGPT';
 import Message from './Message/Message';
 import MessageChat from './Message/MessageChat';
+import SubmitButton from './Message/SubmitButton';
 
 import { Dial } from "flowbite";
 import type { DialOptions, DialInterface } from "flowbite";
@@ -24,6 +26,7 @@ const ChatContent = ({
 }: {
   sticky?: boolean;
 }) => {
+  const { t } = useTranslation();
   const inputRole = useStore((state) => state.inputRole);
   const setError = useStore((state) => state.setError);
   const messages = useStore((state) =>
@@ -45,10 +48,14 @@ const ChatContent = ({
   );
   const advancedMode = useStore((state) => state.advancedMode);
   const generating = useStore.getState().generating;
+  const inputFunction = useStore((state) => state.inputFunction);
   const hideSideMenu = useStore((state) => state.hideSideMenu);
   const saveRef = useRef<HTMLDivElement>(null);
   const newEditIndex = useStore((state) => state.newEditIndex);
   const setNewEditIndex = useStore((state) => state.setNewEditIndex);
+  const _functionContent = useStore((state) => state.functionContent);
+  const updateFunction = useStore((state) => state.updateFunction);
+
   //console.log("edit index:"+newEditIndex)
   // clear error at the start of generating new messages
   useEffect(() => {
@@ -120,17 +127,40 @@ const ChatContent = ({
               </React.Fragment>
             ))}
             {!generating && advancedMode && messages?.length !== 0 &&(<NewMessageButtonBtm messageIndex={messages?.length}/>)}
+            {inputFunction && advancedMode && (
+            <div className="w-full border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group">
+              <div className='text-base gap-4 md:gap-6 m-auto p-4 md:py-6 flex transition-all ease-in-out md:max-w-3xl lg:max-w-3xl xl:max-w-4xl'>
+                <textarea
+                  rows={10}
+                  className='m-0 p-3 w-full resize-none focus:ring-0  focus:border-gray-400 focus:outline-none focus-visible:ring-0 dark:bg-transparent border-b border-black/20 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group'
+                  style={{ maxHeight: '500px', height: '500px', overflowY: 'hidden' }}
+                  onChange={(e) => {
+                    updateFunction(e.target.value);
+                  }}
+                  placeholder = {t('fnCallPlaceholder')}
+                  value={_functionContent}
+                ></textarea>
+              </div>
+            </div>)}
+
 
             <div className="w-full h-60 md:h-60 flex-shrink-0"></div>
           </div>
 
           <div className='absolute bottom-0 border-0 left-0 w-full md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent bg-vert-dark-gradient dark:md:bg-vert-dark-gradient'>
-          {advancedMode && (<Message
+          {/* {advancedMode && (<Message
               role={inputRole}
               content=''
               messageIndex={stickyIndex}
               sticky
-            />)}
+            />)} */}
+          {advancedMode && (<SubmitButton
+            role={inputRole}
+            content=""
+            messageIndex={stickyIndex}
+            sticky
+          />)}
+
           {advancedMode || (<MessageChat
               role={inputRole}
               content=''

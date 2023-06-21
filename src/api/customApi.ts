@@ -46,7 +46,8 @@ export const getChatCompletion = async (
 export const getChatCompletionStream = async (
   apiKey: string,
   messages: MessageInterface[],
-  config: ConfigInterface
+  config: ConfigInterface,
+  function_togo: string,
 ) => {
   const response = await fetch(endpoint, {
     method: 'POST',

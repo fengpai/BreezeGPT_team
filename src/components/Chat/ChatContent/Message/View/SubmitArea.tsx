@@ -10,6 +10,7 @@ import PopupModal from '@components/PopupModal';
 import TokenCount from '@components/TokenCount';
 import CommandPrompt from '../CommandPrompt';
 import StopGeneratingButton from '@components/StopGeneratingButton/StopGeneratingButton';
+import RefreshButtonBtm from './Button/RefreshButtonBtm';
 
 const SubmitArea = ({
   content,
@@ -25,10 +26,15 @@ const SubmitArea = ({
   const inputRole = useStore((state) => state.inputRole);
   const setChats = useStore((state) => state.setChats);
   const _draft = useStore((state) => state.draft);
+  const _functionContent = useStore((state) => state.functionContent);
   const setDraft = useStore((state) => state.setDraft);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const advancedMode = useStore((state) => state.advancedMode);
   const generating = useStore.getState().generating;
+  const isGenerated = useStore.getState().isGenerated;
+
+  const setFunction = useStore((state) => state.setFunction);
+  const updateFunction = useStore((state) => state.updateFunction);
 
   const [_content, _setContent] = useState<string>(content);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -68,6 +74,10 @@ const SubmitArea = ({
     }
   };
 
+  const showFunction = () => {
+    setFunction(useStore.getState().inputFunction?false:true)
+  };
+
   const handleSaveSilence = () => {
     if (sticky && (_content === '' || useStore.getState().generating)) return;
     const updatedChats: ChatInterface[] = JSON.parse(
@@ -84,6 +94,10 @@ const SubmitArea = ({
       updatedMessages[messageIndex].content = _content;
     }    
     setChats(updatedChats);
+  };
+
+  const handleUpdateFunction = () => {
+    updateFunction(_functionContent);
   };
 
   const handleSave = () => {
@@ -128,6 +142,21 @@ const SubmitArea = ({
     handleSubmit();
   };
 
+  const handleRefresh = () => {
+    const updatedChats: ChatInterface[] = JSON.parse(
+      JSON.stringify(useStore.getState().chats)
+    );
+    const updatedMessages = updatedChats[currentChatIndex].messages;
+    updatedMessages.splice(updatedMessages.length - 1, 1);
+    setChats(updatedChats);
+    handleSubmit();
+  };
+
+  useEffect(() => {
+    console.log("update function content")
+    handleUpdateFunction();
+  }, [_functionContent]);
+
   useEffect(() => {
     console.log("saving silence")
     handleSaveSilence();
@@ -158,29 +187,43 @@ const SubmitArea = ({
       >
         {sticky && (
             <>
-                {generating || (
-                <button className="btn relative mr-2 btn-primary gap-2" onClick={handleSaveAndSubmit}>
-                    <svg
-                        stroke='currentColor'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        className='h-4 w-4'
-                        strokeWidth='1.5'
-                        height='2em'
-                        width='2em'
-                        xmlns='http://www.w3.org/2000/svg'
-                    >
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
-                    {t('generateAnswer')}
-                </button>)}
-                {sticky && generating && (
+                {isGenerated && !generating &&(
                     <div className=''>
-                        <StopGeneratingButton />
+                        <RefreshButtonBtm onClick={handleRefresh} />
                     </div>
                 )}
-                <div className='absolute top-[15px] right-0'>
-                    <TokenCount />
+
+                <div className='relative'>
+                    {generating || (
+                    <>
+                    <button className="btn relative mr-2 btn-primary gap-2" onClick={handleSaveAndSubmit}>
+                        <svg
+                            stroke='currentColor'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            className='h-4 w-4'
+                            strokeWidth='1.5'
+                            height='2em'
+                            width='2em'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        {t('generateAnswer')}
+                    </button>
+                    <button className="btn relative mr-2 btn-secondary gap-2" onClick={showFunction}>
+                    {useStore.getState().inputFunction ? t('disableFunction'): t('enableFunction')}
+                    </button>
+                    </>
+                    )}
+                    {sticky && generating && (
+                        <div className=''>
+                            <StopGeneratingButton />
+                        </div>
+                    )}
+                    <div className='absolute top-[15px] right-0'>
+                        <TokenCount />
+                    </div>
                 </div>
             </>
         )}

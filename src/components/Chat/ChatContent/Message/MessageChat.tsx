@@ -8,6 +8,7 @@ import { Role } from '@type/chat';
 import RoleSelector from './RoleSelector';
 
 import NewMessageButton from './NewMessageButton';
+import EditView from './View/EditView';
 
 // const backgroundStyle: { [role in Role]: string } = {
 //   user: 'dark:bg-gray-800',
@@ -52,10 +53,9 @@ const MessageChat = React.memo(
                 messageIndex={messageIndex}
                 sticky={sticky}
               />} */}
-            <MessageContent
-              role={role}
+            <EditView
               content={content}
-              initialIsEdit={initialIsEdit}
+              setIsEdit={setIsEdit}
               messageIndex={messageIndex}
               sticky={sticky}
             />

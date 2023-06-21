@@ -35,6 +35,7 @@ export const getChatCompletionStream = async (
   endpoint: string,
   messages: MessageInterface[],
   config: ConfigInterface,
+  function_togo: string,
   apiKey?: string,
   customHeaders?: Record<string, string>
 ) => {
@@ -45,16 +46,35 @@ export const getChatCompletionStream = async (
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
   if (isAzureEndpoint(endpoint) && apiKey) headers['api-key'] = apiKey;
 
-  const response = await fetch(endpoint, {
+  let body = {
+    messages,
+    ...config,
+    max_tokens: null,
+    stream: true,
+  };
+
+  try {
+    let cleanString = function_togo.replace(/(\r\n|\n|\r|\t)/gm, "");
+    let function_togo_array = JSON.parse(cleanString);
+    if (Array.isArray(function_togo_array)) {
+      body = {
+        ...body,
+        functions: function_togo_array,
+      } 
+    } else {
+      console.log("Parsed value is not a valid array.");
+    }
+  } catch(e) {
+    console.log("Parsing error:", e);
+  }
+
+  const paras = {
     method: 'POST',
     headers,
-    body: JSON.stringify({
-      messages,
-      ...config,
-      max_tokens: null,
-      stream: true,
-    }),
-  });
+    body: JSON.stringify(body),
+  };
+
+  const response = await fetch(endpoint,paras);
   if (response.status === 404 || response.status === 405) {
     const text = await response.text();
     if (text.includes('model_not_found')) {

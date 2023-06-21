@@ -16,8 +16,14 @@ const useSubmit = () => {
   const apiKey = useStore((state) => state.apiKey);
   const setGenerating = useStore((state) => state.setGenerating);
   const generating = useStore((state) => state.generating);
+  const setIsGenerated = useStore((state) => state.setIsGenerated);
+  const isGenerated = useStore((state) => state.isGenerated);
+
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const setChats = useStore((state) => state.setChats);
+  let function_togo = useStore((state) => state.functionContent);
+  const inputFunction = useStore((state) => state.inputFunction);
+  const advancedMode = useStore((state) => state.advancedMode);
 
   const generateTitle = async (
     message: MessageInterface[]
@@ -33,7 +39,7 @@ const useSubmit = () => {
       data = await getChatCompletion(
         useStore.getState().apiEndpoint,
         message,
-        _defaultChatConfig
+        _defaultChatConfig,
       );
     } else if (apiKey) {
       // own apikey
@@ -41,7 +47,7 @@ const useSubmit = () => {
         useStore.getState().apiEndpoint,
         message,
         _defaultChatConfig,
-        apiKey
+        apiKey,
       );
     }
     return data.choices[0].message.content;
@@ -73,6 +79,12 @@ const useSubmit = () => {
       );
       if (messages.length === 0) throw new Error('Message exceed max token!');
 
+      // clear function_togo if no need to pass it.
+      console.log('no input function_togo');
+      if(!inputFunction || !advancedMode) {
+        function_togo = ''
+      }
+
       // no api key (free)
       if (!apiKey || apiKey.length === 0) {
         // official endpoint
@@ -84,7 +96,8 @@ const useSubmit = () => {
         stream = await getChatCompletionStream(
           useStore.getState().apiEndpoint,
           messages,
-          chats[currentChatIndex].config
+          chats[currentChatIndex].config,
+          function_togo
         );
       } else if (apiKey) {
         // own apikey
@@ -92,7 +105,8 @@ const useSubmit = () => {
           useStore.getState().apiEndpoint,
           messages,
           chats[currentChatIndex].config,
-          apiKey
+          function_togo,
+          apiKey,
         );
       }
 
@@ -113,13 +127,27 @@ const useSubmit = () => {
 
           if (result === '[DONE]' || done) {
             reading = false;
+            console.log("generated");
           } else {
             const resultString = result.reduce((output: string, curr) => {
+              console.log(curr)
               if (typeof curr === 'string') {
                 partial += curr;
               } else {
-                const content = curr.choices[0].delta.content;
-                if (content) output += content;
+                if(curr.choices[0].delta.function_call) {
+                  let content = ""
+                  if(curr.choices[0].delta.function_call.name) {
+                    content = curr.choices[0].delta.function_call.name;
+                  } else {
+                    content = curr.choices[0].delta.function_call.arguments;
+                  }
+                  if (content) output += content;
+                  console.log(output);
+                } else {
+                  console.log(curr.choices[0])
+                  const content = curr.choices[0].delta.content;
+                  if (content) output += content;
+                }
               }
               return output;
             }, '');
@@ -198,6 +226,7 @@ const useSubmit = () => {
       setError(err);
     }
     setGenerating(false);
+    setIsGenerated(true);
   };
 
   return { handleSubmit, error };

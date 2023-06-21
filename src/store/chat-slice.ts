@@ -6,10 +6,13 @@ export interface ChatSlice {
   chats?: ChatInterface[];
   currentChatIndex: number;
   generating: boolean;
+  isGenerated: boolean;
   error: string;
   folders: FolderCollection;
   newEditIndex: number;
   draft: string;
+  inputFunction: boolean;
+  functionContent: string;
   setMessages: (messages: MessageInterface[]) => void;
   setChats: (chats: ChatInterface[]) => void;
   setDraft: (draft: string) => void;
@@ -18,6 +21,9 @@ export interface ChatSlice {
   setError: (error: string) => void;
   setFolders: (folders: FolderCollection) => void;
   setNewEditIndex: (newEditIndex: number) => void;
+  setFunction: (inputFunction: boolean) => void;
+  updateFunction: (functionContent: string) => void;
+  setIsGenerated: (isGenerated: boolean) => void;
 }
 
 export const createChatSlice: StoreSlice<ChatSlice> = (set, get) => ({
@@ -25,7 +31,10 @@ export const createChatSlice: StoreSlice<ChatSlice> = (set, get) => ({
   newEditIndex: -1,
   currentChatIndex: -1,
   generating: false,
+  inputFunction: false,
+  isGenerated: false,
   draft: '',
+  functionContent: '',
   error: '',
   folders: {},
   setMessages: (messages: MessageInterface[]) => {
@@ -65,6 +74,13 @@ export const createChatSlice: StoreSlice<ChatSlice> = (set, get) => ({
       generating: generating,
     }));
   },
+  setIsGenerated: (isGenerated: boolean) => {
+    set((prev: ChatSlice) => ({
+      ...prev,
+      isGenerated: isGenerated,
+    }));
+  },
+
   setError: (error: string) => {
     set((prev: ChatSlice) => ({
       ...prev,
@@ -75,6 +91,18 @@ export const createChatSlice: StoreSlice<ChatSlice> = (set, get) => ({
     set((prev: ChatSlice) => ({
       ...prev,
       folders: folders,
+    }));
+  },
+  setFunction: (inputFunction: boolean) => {
+    set((prev: ChatSlice) => ({
+      ...prev,
+      inputFunction: inputFunction,
+    }));
+  },
+  updateFunction: (functionContent: string) => {
+    set((prev: ChatSlice) => ({
+      ...prev,
+      functionContent: functionContent,
     }));
   },
 });

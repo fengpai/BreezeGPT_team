@@ -56,14 +56,14 @@ const Message = React.memo(
               />} */}
             {/* {advancedMode ||
               <div>{role}</div>} */}
-            {sticky && (<SubmitButton
+            {sticky || (<MessageContent
               role={role}
               content={content}
               initialIsEdit={initialIsEdit}
               messageIndex={messageIndex}
               sticky={sticky}
             />)}
-            {sticky || (<MessageContent
+            {sticky && (<SubmitButton
               role={role}
               content={content}
               initialIsEdit={initialIsEdit}
